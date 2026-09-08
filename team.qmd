@@ -1,0 +1,26 @@
+---
+toc: false
+---
+## Project Team
+**Project Leadership and Supervision**
+
+* **Prof. Dr. Fotis Jannidis**  
+  Chair of Computational Philology, University of Würzburg  
+  Projektidee
+
+**Development & Research**
+
+* **Marina Spielberg** (Development & Research)  
+  Development of the heuristic chunking workflow, prompt engineering for text type classification, LLM benchmarking and evaluation, annotation tool, gold-standard manual annotation, upgrading `epub_unpack` to run on HPC infrastructure, website creation.
+
+* **Leonard Konle** (HPC Infrastructure & Model Deployment)  
+  Deployment of open-weight LLMs via Hugging Face/vLLM on the TU Dresden HPC cluster and tensor parallelism scaling.
+
+* **Lennart Keller** (Software Architecture)  
+  Development of the `epub_unpack` extraction tool and type inference heuristics.
+
+* **Thora Hagen** (Baseline Classification)  
+  Development of the TF-IDF Bag-of-Words classification baselines.
+
+* **Aidan Belisle** (Student Research Assistant)  
+  Gold-standard manual annotation.

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>evaluation</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dataset.html"> 
+<span class="menu-text">Dataset</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./guidelines.html"> 
+<span class="menu-text">Annotation Guidelines</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pipeline.html"> 
+<span class="menu-text">Pipeline</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./evaluation.html" aria-current="page"> 
+<span class="menu-text">Evaluation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./team.html"> 
+<span class="menu-text">Team</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./impressum.html"> 
+<span class="menu-text">Impressum</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#evaluation-and-benchmarking-results" id="toc-evaluation-and-benchmarking-results" class="nav-link active" data-scroll-target="#evaluation-and-benchmarking-results">Evaluation and Benchmarking Results</a></li>
+  <li><a href="#the-gold-standard-test-set" id="toc-the-gold-standard-test-set" class="nav-link" data-scroll-target="#the-gold-standard-test-set">The Gold Standard Test Set</a></li>
+  <li><a href="#annotation-workflow" id="toc-annotation-workflow" class="nav-link" data-scroll-target="#annotation-workflow">Annotation Workflow</a></li>
+  <li><a href="#evaluation-round-1" id="toc-evaluation-round-1" class="nav-link" data-scroll-target="#evaluation-round-1">Evaluation: Round 1</a></li>
+  <li><a href="#evaluation-round-2" id="toc-evaluation-round-2" class="nav-link" data-scroll-target="#evaluation-round-2">Evaluation: Round 2</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="evaluation-and-benchmarking-results" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-and-benchmarking-results">Evaluation and Benchmarking Results</h2>
+<p>To identify the best model for the classification task and to determine the quality of the classification we created a gold dataset and conducted evaluations across LLMs of various sizes and taxonomic configurations. Since our corpus is protected by copyright we avoid commercial APIs and deploy open-weight models for inference.</p>
+</section>
+<section id="the-gold-standard-test-set" class="level2">
+<h2 class="anchored" data-anchor-id="the-gold-standard-test-set">The Gold Standard Test Set</h2>
+<p>The classification of text types in dime novels poses an inherent class imbalance problem. Their narrative body accounts for most of all content segments. A random test sample would result in a dataset dominated by story chapters.</p>
+<p>To counter this issue, we created a stratified sample. From 25 novels (1071 segments) of the <a href="./dataset.html">test corpus</a> from different series and publishers all non-chapter chunks were taken (134 in total). To reach 200 text chunks the remaining 67 segments were filled with randomly taken chapters from the same pool of novels.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/gold_set_distribution_round1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. Reader-information was later renamed to “meta-information”."><img src="images/gold_set_distribution_round1.png" class="img-fluid figure-img" style="width:70.0%" alt="Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. Reader-information was later renamed to “meta-information”."></a></p>
+<figcaption>Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. Reader-information was later renamed to “meta-information”.</figcaption>
+</figure>
+</div>
+</section>
+<section id="annotation-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="annotation-workflow">Annotation Workflow</h2>
+<p>To establish a verified baseline for classification evaluation and prompt refinement, we deployed a custom interactive HTML annotation tool. Rather than requiring annotators to interact with raw JSON files, this custom interface displays the original HTML chunk alongside the results of an initial automated pre-classification pass, allowing annotators to visually compare suggested labels. Annotators performed multi-pass manual labelling across the gold dataset. This dataset formed the ground truth used to benchmark all downstream LLM evaluations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/annotation_tool.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Interface of the custom annotation tool for double-keying, displaying a text segment, the results of an initial automated pre-classification pass and the manual annotations."><img src="images/annotation_tool.png" class="img-fluid figure-img" style="width:70.0%" alt="Interface of the custom annotation tool for double-keying, displaying a text segment, the results of an initial automated pre-classification pass and the manual annotations."></a></p>
+<figcaption>Interface of the custom annotation tool for double-keying, displaying a text segment, the results of an initial automated pre-classification pass and the manual annotations.</figcaption>
+</figure>
+</div>
+</section>
+<section id="evaluation-round-1" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-round-1">Evaluation: Round 1</h2>
+<p>In the first evaluation phase, we tested five small open-weight models (≤120B parameters). The models were prompted to classify each segment of the gold dataset into an 11-class taxonomy shown in the distribution table above.</p>
+<p>This setup presented a severe challenge because several paratextual classes shared highly overlapping semantic and stylistic boundaries (such as <em>reading samples</em> vs.&nbsp;<em>narrative chapters</em>, or <em>advertisements</em> vs.&nbsp;<em>series introductions</em>).</p>
+<p><a href="images/cm_gpt_oss_120b_round1_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/cm_gpt_oss_120b_round1_normalized.png" class="img-fluid" style="width:70.0%"></a></p>
+<p><a href="images/cm_kimi_k2_round1_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/cm_kimi_k2_round1_normalized.png" class="img-fluid" style="width:70.0%"></a></p>
+<p>While moonshotai_kimi-k2 achieved the highest accuracy (90.0%), its Macro F1-score was significantly lower (0.744). This discrepancy indicates that while the model performs well on high-frequency categories like <code>chapter</code> (89.5% recall) and <code>reader-information</code> (85.5% recall), it degraded significantly on low-frequency paratexts, decreasing the unweighted macro average.</p>
+</section>
+<section id="evaluation-round-2" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-round-2">Evaluation: Round 2</h2>
+<p>To resolve these boundary conflicts, we restructured the vocabulary into a two-tier taxonomy <a href="./guidelines.html#label-taxonomy">link to taxonomy page</a> of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/gold_set_distribution_round2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information."><img src="images/gold_set_distribution_round2.png" class="img-fluid figure-img" style="width:70.0%" alt="Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information."></a></p>
+<figcaption>Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information.</figcaption>
+</figure>
+</div>
+<p>The table below displays the classification results of the second evaluation run on the gold dataset.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Model</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Accuracy</strong></th>
+<th><strong>Macro Precision</strong></th>
+<th><strong>Macro Recall</strong></th>
+<th><strong>Macro F1</strong></th>
+<th><strong>Weighted F1</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>z-ai_glm-5</strong></td>
+<td>LLM</td>
+<td><strong>0.975</strong></td>
+<td><strong>0.990</strong></td>
+<td><strong>0.991</strong></td>
+<td><strong>0.989</strong></td>
+<td><strong>0.975</strong></td>
+</tr>
+<tr class="even">
+<td><strong>qwen_qwen3.5-397b-a17b</strong></td>
+<td>LLM</td>
+<td><strong>0.975</strong></td>
+<td><strong>0.990</strong></td>
+<td><strong>0.991</strong></td>
+<td><strong>0.989</strong></td>
+<td><strong>0.975</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>openai_gpt-oss-120b</strong></td>
+<td>LLM</td>
+<td>0.980</td>
+<td>0.932</td>
+<td>0.991</td>
+<td>0.951</td>
+<td>0.981</td>
+</tr>
+<tr class="even">
+<td><strong>mistralai_mistral-large-2512</strong></td>
+<td>LLM</td>
+<td>0.955</td>
+<td>0.873</td>
+<td>0.869</td>
+<td>0.870</td>
+<td>0.957</td>
+</tr>
+<tr class="odd">
+<td><strong>openai_gpt-oss-20b</strong></td>
+<td>LLM</td>
+<td>0.940</td>
+<td>0.904</td>
+<td>0.971</td>
+<td>0.926</td>
+<td>0.940</td>
+</tr>
+<tr class="even">
+<td><strong>moonshotai_kimi-k2-0905</strong></td>
+<td>LLM</td>
+<td>0.945</td>
+<td>0.834</td>
+<td>0.857</td>
+<td>0.841</td>
+<td>0.948</td>
+</tr>
+<tr class="odd">
+<td><strong>meta-llama_llama-3.3-70b</strong></td>
+<td>LLM</td>
+<td>0.900</td>
+<td>0.920</td>
+<td>0.864</td>
+<td>0.859</td>
+<td>0.892</td>
+</tr>
+<tr class="even">
+<td><strong>deepseek_deepseek-v3.2-spec</strong></td>
+<td>LLM</td>
+<td>0.965</td>
+<td>0.850</td>
+<td>0.866</td>
+<td>0.856</td>
+<td>0.970</td>
+</tr>
+<tr class="odd">
+<td><strong>inferred_type (rule-based baseline)</strong></td>
+<td>Rule-based</td>
+<td>0.725</td>
+<td>0.762</td>
+<td>0.709</td>
+<td>0.729</td>
+<td>0.776</td>
+</tr>
+<tr class="even">
+<td><strong>deepseek_deepseek-v3.2</strong></td>
+<td>LLM</td>
+<td>0.830</td>
+<td>0.736</td>
+<td>0.772</td>
+<td>0.722</td>
+<td>0.830</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/cm_z-ai_glm-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Confusion matrix for GLM-5 across primary taxonomy labels."><img src="images/cm_z-ai_glm-5.png" class="img-fluid figure-img" style="width:70.0%" alt="Confusion matrix for GLM-5 across primary taxonomy labels."></a></p>
+<figcaption>Confusion matrix for GLM-5 across primary taxonomy labels.</figcaption>
+</figure>
+</div>
+<p>GLM-5/ and Qwen3.5-397B achieved a primary classification accuracy of 97.5% and a Macro F1-score of 0.989.</p>
+<p>The gpt-oss-120b model climbed from 89.5% in the first evaluation pass to 98.0% (with the Macro F1-score rising from 0.813 to 0.951).</p>
+<p>The rule-based baseline (inferred_type) generated through the <code>epub_unpack</code> tool achieved only a 0.729 Macro F1 score.</p>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>The highly favourable results achieved through LLM-based classification, particularly when contrasted with rule-based techniques, demonstrate that these traditional systems struggle to effectively manage the extensive variability in EPUB construction. Nevertheless, the good performance is partially attributable to methodological simplifications. Specifically, pragmatic constraints necessitated the use of only the broader, upper levels of the controlled vocabulary instead of its complete framework. Further investigation is required to validate these findings against the full vocabulary. An examination of the existing misclassifications offers also a pathway for future optimization. The classification errors depicted in the confusion matrix for the top performing model GLM-5 stem from a 7% misclassification of “chapter” segments as “reader-information”. Interestingly, this pattern is asymmetric. This occurs because stylistic narrative prose is used in chapters as well as in previews or reading samples, which are grouped under the “reader-information” label. Human annotators and LLMs alike require positional and structural context within the document to reliably differentiate these cases. Incorporating positional context like sequence order or file placement is an evident possibility to improve classification performance in the future.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,220 @@
+/* Experimental styles only. The published site does not load this file. */
+
+:root {
+  --playground-ink: #24313a;
+  --playground-muted: #66747d;
+  --playground-paper: #f6f5f0;
+  --playground-panel: #ffffff;
+  --playground-accent: #b55236;
+  --playground-accent-soft: #ead8d0;
+  --playground-teal: #287c78;
+  --playground-teal-soft: #dcebe8;
+  --playground-rule: #d9dfdc;
+  --playground-shadow: 0 0.7rem 1.8rem rgba(36, 49, 58, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--playground-ink);
+  background:
+    linear-gradient(rgba(246, 245, 240, 0.96), rgba(246, 245, 240, 0.96)),
+    repeating-linear-gradient(0deg, rgba(36, 49, 58, 0.018) 0, rgba(36, 49, 58, 0.018) 1px, transparent 1px, transparent 4px);
+  line-height: 1.7;
+}
+
+.navbar {
+  border-bottom: 0;
+  box-shadow: 0 2px 14px rgba(36, 49, 58, 0.13);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.navbar .nav-link {
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  opacity: 1;
+  color: var(--playground-accent) !important;
+}
+
+main.content {
+  max-width: 1100px;
+}
+
+.quarto-title-block {
+  margin-bottom: 3rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+}
+
+h1 {
+  max-width: 15ch;
+  color: var(--playground-ink);
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1.08;
+}
+
+h2 {
+  margin-top: 3.5rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--playground-rule);
+  color: var(--playground-ink);
+}
+
+h2::before {
+  display: block;
+  width: 2.5rem;
+  margin-bottom: 0.7rem;
+  border-top: 4px solid var(--playground-accent);
+  content: "";
+}
+
+h3,
+h4 {
+  margin-top: 2rem;
+  color: var(--playground-ink);
+}
+
+a {
+  color: var(--playground-teal);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--playground-accent);
+}
+
+strong {
+  color: var(--playground-ink);
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding: 0.8rem 1.5rem;
+  border-left: 4px solid var(--playground-teal);
+  color: var(--playground-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+}
+
+figure {
+  margin: 2.5rem auto;
+}
+
+.quarto-lightbox img,
+figure img {
+  border: 1px solid rgba(36, 49, 58, 0.08);
+  border-radius: 0.35rem;
+  box-shadow: var(--playground-shadow);
+}
+
+figcaption {
+  max-width: 70ch;
+  margin: 0.75rem auto 0;
+  color: var(--playground-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.callout {
+  margin: 2rem 0;
+  background: var(--playground-panel);
+  border: 1px solid var(--playground-rule);
+  border-left: 4px solid var(--playground-accent) !important;
+  border-radius: 0.35rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(36, 49, 58, 0.06);
+}
+
+.callout.callout-tip {
+  border-left-color: var(--playground-teal) !important;
+}
+
+.callout.callout-warning {
+  border-left-color: #bd812b !important;
+}
+
+.callout .callout-title-container {
+  color: var(--playground-ink);
+  font-weight: 700;
+}
+
+table {
+  overflow: hidden;
+  background: var(--playground-panel);
+  border-color: var(--playground-rule);
+  box-shadow: 0 0.25rem 0.8rem rgba(36, 49, 58, 0.04);
+}
+
+table thead th {
+  color: var(--playground-ink);
+  background: var(--playground-teal-soft);
+  border-bottom: 2px solid var(--playground-teal);
+}
+
+table tbody tr:nth-child(even) {
+  background: rgba(220, 235, 232, 0.28);
+}
+
+code {
+  color: #8c3e2a;
+  background: rgba(181, 82, 54, 0.08);
+}
+
+pre {
+  border: 1px solid var(--playground-rule);
+  border-radius: 0.35rem;
+  box-shadow: 0 0.3rem 1rem rgba(36, 49, 58, 0.06);
+}
+
+#TOC,
+.toc-actions {
+  border-color: var(--playground-rule);
+}
+
+#TOC .nav-link.active {
+  color: var(--playground-accent);
+  border-left-color: var(--playground-accent);
+}
+
+.column > p:first-child strong:first-child {
+  color: var(--playground-accent);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  body {
+    line-height: 1.6;
+  }
+
+  main.content {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  h1 {
+    font-size: 2.45rem;
+  }
+
+  h2 {
+    margin-top: 2.75rem;
+  }
+
+  figure img {
+    max-width: 100%;
+  }
+}

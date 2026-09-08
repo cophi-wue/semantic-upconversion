@@ -1,0 +1,29 @@
+---
+toc: false
+---
+## Imprint und Datenschutzerklärung
+Lehrstuhl für Computerphilologie und Neuere Deutsche Literaturgeschichte  
+Campus Hubland Nord  
+Emil-Hilb-Weg 23  
+97074 Würzburg
+
+**Vertreten durch:**
+
+Prof. Dr. Fotis Jannidis
+
+**Kontakt:**
+
+* Tel.: +49 931 - 31 - 800 78
+* E-Mail: fotis.jannidis@uni-wuerzburg.de
+
+**Haftungsausschluss**
+
+Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+
+Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+
+Die auf dieser Website dokumentierten Workflows und Skripte sind Open Source (sofern im GitHub-Repository angegeben). Die untersuchten Volltexte der Heftromane unterliegen dem deutschen Urheberrecht und werden nicht öffentlich zugänglich gemacht.
+
+**Datenschutzerklärung**
+
+Diese Webseite wird als statische Seite über GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA) bereitgestellt. Beim Aufruf dieser Seite werden standardmäßig Server-Logfiles (z. B. IP-Adresse, Datum/Uhrzeit des Abrufs, Browsertyp) durch GitHub verarbeitet.

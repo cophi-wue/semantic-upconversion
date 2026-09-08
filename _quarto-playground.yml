@@ -1,0 +1,6 @@
+project:
+  output-dir: _playground
+
+format:
+  html:
+    css: styles-playground.css
