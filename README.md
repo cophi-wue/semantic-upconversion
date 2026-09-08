@@ -28,7 +28,7 @@ quarto preview --profile playground
 quarto preview --profile fresh
 ```
 
-Each command starts a local preview server and opens a browser window. The address usually begins with `http://localhost`. The preview is local to the computer running Quarto; it does not change the GitHub website.
+Each command starts a local preview server and opens a browser window. 
 
 The design profiles are configured in:
 
@@ -56,32 +56,6 @@ The website pages are Quarto Markdown files:
 
 Images are stored in `images/`.
 
-After editing, preview the relevant design and check the page at desktop and mobile widths. Stop the preview server with `Ctrl+C`.
-
-## Collaboration
-
-Please do not work directly on `main`. Create a branch for each change:
-
-```powershell
-git switch -c improve-page-layout
-```
-
-Make and preview your changes, then check the repository status:
-
-```powershell
-git status
-git diff
-```
-
-Commit focused changes with a short message:
-
-```powershell
-git add index.qmd styles-playground.css
-git commit -m "Improve homepage layout"
-git push -u origin improve-page-layout
-```
-
-Then open a pull request on GitHub. Describe what changed and which preview command reviewers should use. Keep `main` in a working state so it can be published at any time.
 
 ## Rendering
 
@@ -99,9 +73,3 @@ quarto render --profile fresh
 ```
 
 The alternative rendered sites are written to `_playground/` and `_fresh/`. These folders are local comparison outputs and are ignored by Git. The original `docs/` output is kept because it is the current GitHub Pages publication target.
-
-## GitHub Pages
-
-The repository currently contains the rendered original site in `docs/`. Once GitHub Pages is configured for this repository, set the publishing source to the `main` branch and the `/docs` folder. A later improvement can move rendering into GitHub Actions so that GitHub renders the site consistently after changes are merged.
-
-Before making the site public, check that all text, images, logos, and links are permitted for publication. Do not commit copyrighted EPUB files, full-text datasets, credentials, local virtual environments, or other private material.
