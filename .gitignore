@@ -5,3 +5,6 @@ _fresh/
 __pycache__/
 .venv/
 .env
+
+/.quarto/
+**/*.quarto_ipynb
