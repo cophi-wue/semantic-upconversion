@@ -8,7 +8,8 @@ Welcome to the documentation portal for the project "Erschließung und Struktura
 
 **Context and Scope**
 
-This project was developed at the [Chair of Computational Philology](https://www.germanistik.uni-wuerzburg.de/computerphilologie/) at the University of Würzburg in cooperation with the National Research Data Infrastructure (NFDI) consortium [Text+](https://text-plus.org/) (01.08.2022 - 30.09.2026). As part of the initiative “Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek”, the project aims at the sematic upconversion of German dime novels. This includes the transformation of commercial EPUB files into standardized and structurally enriched full-text corpora and derived formats (*Abgeleitete Textformate*, ATF) to enable large-scale text mining and computational literary analysis. The data basis for this project are roughly 35,000 EPUBs of German dime novels fKrom the German National Library (DNB).
+This project was developed at the [Chair of Computational Philology](https://www.germanistik.uni-wuerzburg.de/computerphilologie/) at the University of Würzburg in cooperation with the National Research Data Infrastructure (NFDI) consortium [Text+](https://text-plus.org/), spanning from 01.08.2022 to 30.09.2026.
+As part of the initiative “Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek”, the project aims at the sematic upconversion of German dime novels. This includes the transformation of commercial EPUB files into standardized and structurally enriched full-text corpora and derived formats (*Abgeleitete Textformate*, ATF) to enable large-scale text mining and computational literary analysis. The data basis for this project are roughly 35,000 EPUBs of German dime novels from the German National Library (DNB).
 
 ::: callout-note
 ## What is Text+?
