@@ -181,6 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#text-classification" id="toc-text-classification" class="nav-link" data-scroll-target="#text-classification">Text Classification</a></li>
   <li><a href="#smallest-content-unit" id="toc-smallest-content-unit" class="nav-link" data-scroll-target="#smallest-content-unit">Smallest Content Unit</a></li>
   <li><a href="#text-chunking" id="toc-text-chunking" class="nav-link" data-scroll-target="#text-chunking">Text chunking</a></li>
+  <li><a href="#text-chunking-distribution" id="toc-text-chunking-distribution" class="nav-link" data-scroll-target="#text-chunking-distribution">Text Chunking Distribution</a></li>
   </ul></li>
   <li><a href="#stage-2-llm-labelling" id="toc-stage-2-llm-labelling" class="nav-link" data-scroll-target="#stage-2-llm-labelling">Stage 2: LLM Labelling</a></li>
   <li><a href="#stage-3-tei-transformation-future-work" id="toc-stage-3-tei-transformation-future-work" class="nav-link" data-scroll-target="#stage-3-tei-transformation-future-work">Stage 3: TEI Transformation (future work)</a></li>
@@ -210,11 +211,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Why developing an EPUB extraction tool?
+<span class="screen-reader-only">Note</span>Why developing an EPUB extraction tool from scratch?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>An initial idea was to check if we could reuse parts of the XSLT conversion structure used by the IDS in their <a href="https://github.com/KorAP/deliko">Epub to KorAP (via TEI I5) conversion project</a> (see the article <a href="https://zenodo.org/records/14943116">“National Library as Corpus: Introducing DeLiKo@DNB – a Large Synchronous German Fiction Corpus”</a>). Upon closer inspection of their TEI conversion logic we decided that their approach does not fit the needs of our data structure. Since their TEI I5 schema is build around specific needs for linguistic data it would differ much from our dime novel data. Furthermore, the conversion uses Saxon EE which would lead to unwanted dependencies. So we decided to continue developing our own EPUB to JSON converter, which serves as a middle processing step to the final TEI conversion.</p>
+<p>There a number of TEI to EPUB conversion tools available, but we could not find a suitable open-source tool for the reverse direction (EPUB to TEI). An initial idea was to check if we could reuse parts of the XSLT conversion structure used by the IDS in their <a href="https://github.com/KorAP/deliko">Epub to KorAP (via TEI I5) conversion project</a> (see the article <a href="https://zenodo.org/records/14943116">“National Library as Corpus: Introducing DeLiKo@DNB – a Large Synchronous German Fiction Corpus”</a>). Upon closer inspection of their TEI conversion logic we decided that their approach does not fit the needs of our data structure. Since their TEI I5 schema is build around specific needs for linguistic data it would differ much from our dime novel data. Furthermore, the conversion uses Saxon EE which would lead to unwanted dependencies. So we decided to continue developing our own EPUB to JSON converter, which serves as a middle processing step to the final TEI conversion.</p>
 </div>
 </div>
 <p><strong>Stage 2: Semantic LLM Classification</strong></p>
@@ -432,8 +433,9 @@ JSON Output
 </div>
 </div>
 </div>
-<section id="text-chunking-distribution" class="level4">
-<h4 class="anchored" data-anchor-id="text-chunking-distribution">Text Chunking Distribution</h4>
+</section>
+<section id="text-chunking-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="text-chunking-distribution">Text Chunking Distribution</h3>
 <p>The segmentation yielded a total of 69,283 chunks across the test set, distributed among the chunking strategies as follows:</p>
 <table class="caption-top table">
 <thead>
@@ -489,7 +491,6 @@ JSON Output
 <p>A total of 42 novels lacked internal structural delimiters or chapter headings entirely, causing the entire narrative body to remain in a single text block. These files are incompatible with the current chunk-level segmentation pipeline, as processing them would require passing the full text into an LLM context window at once, which was not yet evaluated within this framework and reserved for future pipeline iterations.</p>
 </div>
 </div>
-</section>
 </section>
 </section>
 <section id="stage-2-llm-labelling" class="level2">
