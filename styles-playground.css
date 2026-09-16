@@ -196,6 +196,105 @@ pre {
   text-transform: uppercase;
 }
 
+.team-page {
+  --team-card-padding: clamp(1.2rem, 2.5vw, 1.7rem);
+}
+
+.team-page > h2 {
+  max-width: 18ch;
+  margin-bottom: 3.5rem;
+}
+
+.team-section {
+  margin: 3.5rem 0;
+}
+
+.team-section > p:first-child {
+  margin-bottom: 1.25rem;
+}
+
+.team-section > p:first-child strong {
+  color: var(--playground-accent);
+  font-size: 0.82rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.team-card {
+  min-width: 0;
+  padding: var(--team-card-padding);
+  background: var(--playground-panel);
+  border: 1px solid var(--playground-rule);
+  border-top: 3px solid var(--playground-teal-soft);
+  border-radius: 0.35rem;
+  box-shadow: 0 0.45rem 1.2rem rgba(36, 49, 58, 0.06);
+}
+
+.team-card-lead {
+  border-top-color: var(--playground-accent);
+}
+
+.team-card-featured {
+  border-top-color: var(--playground-teal-soft);
+}
+
+.team-card > p:first-child {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--playground-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.team-card-lead > p:first-child {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.team-card-lead > p:first-child strong {
+  display: inline;
+  margin-bottom: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.team-card > p:last-child {
+  margin-bottom: 0;
+}
+
+.team-card em {
+  color: var(--playground-muted);
+  font-size: 0.92rem;
+}
+
+.team-card a {
+  font-weight: 600;
+}
+
+.team-assistants {
+  padding-top: 0.5rem;
+}
+
+.team-grid-compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.team-grid-compact .team-card > p:first-child {
+  margin-bottom: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 767px) {
   body {
     line-height: 1.6;
@@ -216,5 +315,18 @@ pre {
 
   figure img {
     max-width: 100%;
+  }
+
+  .team-page > h2 {
+    margin-bottom: 2.5rem;
+  }
+
+  .team-section {
+    margin: 2.75rem 0;
+  }
+
+  .team-grid,
+  .team-grid-compact {
+    grid-template-columns: 1fr;
   }
 }
