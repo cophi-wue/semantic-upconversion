@@ -1,7 +1,7 @@
 ---
 ---
 
-:::::::: columns
+:::::::: {.columns .index-page}
 :::: {.column width="70%"}
 ## Semantic Upconversion of German Dime Novels
 Welcome to the documentation portal for the project "Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek".
