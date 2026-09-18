@@ -17,6 +17,8 @@ website:
         href: pipeline.qmd
       - text: "Evaluation"
         href: evaluation.qmd
+      - text: "Publications"
+        href: publications.pdf
       - text: "Team"
         href: team.qmd
     right:

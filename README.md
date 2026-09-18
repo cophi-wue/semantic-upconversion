@@ -15,7 +15,7 @@ Open the project in VS Code or another editor. No Python environment is required
 
 ## Preview the designs
 
-The repository contains three website designs:
+The repository contains the production design and the editorial playground design:
 
 ```powershell
 # Original production design
@@ -24,23 +24,19 @@ quarto preview
 # Editorial playground design
 quarto preview --profile playground
 
-# Fresh blue, mint, and coral design
-quarto preview --profile fresh
 ```
 
-Each command starts a local preview server and opens a browser window. 
+Each command starts a local preview server and opens a browser window.
 
 The design profiles are configured in:
 
 - `_quarto.yaml` - original website configuration
 - `_quarto-playground.yml` - playground configuration
-- `_quarto-fresh.yml` - fresh design configuration
 
 Their stylesheets are:
 
 - `docs/styles.css` - rendered original site stylesheet
 - `styles-playground.css` - playground stylesheet
-- `fresh-design/styles.css` - fresh design stylesheet
 
 ## Editing pages
 
@@ -56,7 +52,6 @@ The website pages are Quarto Markdown files:
 
 Images are stored in `images/`.
 
-
 ## Rendering
 
 To render the original site into `docs/`:
@@ -69,7 +64,8 @@ To render the alternative designs:
 
 ```powershell
 quarto render --profile playground
-quarto render --profile fresh
 ```
 
-The alternative rendered sites are written to `_playground/` and `_fresh/`. These folders are local comparison outputs and are ignored by Git. The original `docs/` output is kept because it is the current GitHub Pages publication target.
+The playground output is written to `_playground/`, which is ignored by Git. The original `docs/` output is kept because it is the current GitHub Pages publication target.
+
+To use the plain Quarto theme without custom CSS, run `quarto preview` or `quarto render` without a profile. The base `_quarto.yaml` uses the Cosmo theme and does not load a custom stylesheet.
