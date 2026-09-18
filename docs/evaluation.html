@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0cfe7a3482e0d49a74229a8f3b76718.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -78,6 +78,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles-playground.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -165,14 +166,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="the-gold-standard-test-set">The Gold Standard Test Set</h2>
 <p>The classification of text types in dime novels poses an inherent class imbalance problem. Their narrative body accounts for most of all content segments. A random test sample would result in a dataset dominated by story chapters.</p>
 <p>To counter this issue, we created a stratified sample. From 25 novels (1071 segments) of the <a href="./dataset.html">test corpus</a>, which include different series and publishers, all non-chapter chunks were taken (134 in total). To reach 200 text chunks the remaining 67 segments were filled with randomly taken chapters from the same pool of novels.</p>
-<div id="fig-gold-set-distribution-round1" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gold-set-distribution-round1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/gold_set_distribution_round1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. reader-information was later renamed to meta-information."><img src="images/gold_set_distribution_round1.png" class="img-fluid figure-img" style="width:70.0%"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gold-set-distribution-round1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. <code>reader-information</code> was later renamed to <code>meta-information</code>.
-</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/gold_set_distribution_round1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. reader-information was later renamed to meta-information."><img src="images/gold_set_distribution_round1.png" class="img-fluid figure-img" style="width:70.0%" alt="Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. reader-information was later renamed to meta-information."></a></p>
+<figcaption>Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. <code>reader-information</code> was later renamed to <code>meta-information</code>.</figcaption>
 </figure>
 </div>
 </section>
@@ -196,7 +193,7 @@ Figure&nbsp;1: Class distribution of the 200 benchmark chunks during Round 1 eva
 </section>
 <section id="evaluation-round-2" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation-round-2">Evaluation: Round 2</h2>
-<p>To resolve these boundary conflicts, we restructured the vocabulary into a two-tier taxonomy <a href="./guidelines.html#label-taxonomy">link to taxonomy page</a> of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models.</p>
+<p>To resolve these boundary conflicts, we restructured the vocabulary into a two-tier <a href="./guidelines.html#label-taxonomy">taxonomy</a> of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/gold_set_distribution_round2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information."><img src="images/gold_set_distribution_round2.png" class="img-fluid figure-img" style="width:70.0%" alt="Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information."></a></p>
@@ -324,13 +321,13 @@ Figure&nbsp;1: Class distribution of the 200 benchmark chunks during Round 1 eva
 <figcaption>Confusion matrix for GLM-5 across primary taxonomy labels.</figcaption>
 </figure>
 </div>
-<p>GLM-5/ and Qwen3.5-397B achieved a primary classification accuracy of 97.5% and a Macro F1-score of 0.989.</p>
+<p>GLM-5 and Qwen3.5-397B achieved a primary classification accuracy of 97.5% and a Macro F1-score of 0.989.</p>
 <p>The gpt-oss-120b model climbed from 89.5% in the first evaluation pass to 98.0% (with the Macro F1-score rising from 0.813 to 0.951).</p>
 <p>The rule-based baseline (inferred_type) generated through the <code>epub_unpack</code> tool achieved only a 0.729 Macro F1 score.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
-<p>The highly favourable results achieved through LLM-based classification, particularly when contrasted with rule-based techniques, demonstrate that these traditional systems struggle to effectively manage the extensive variability in EPUB construction. Nevertheless, the good performance is partially attributable to methodological simplifications. Specifically, pragmatic constraints necessitated the use of only the broader, upper levels of the controlled vocabulary instead of its complete framework. Further investigation is required to validate these findings against the full vocabulary. An examination of the existing misclassifications offers also a pathway for future optimization. The classification errors depicted in the confusion matrix for the top performing model GLM-5 stem from a 7% misclassification of “chapter” segments as “reader-information”. Interestingly, this pattern is asymmetric. This occurs because stylistic narrative prose is used in chapters as well as in previews or reading samples, which are grouped under the “reader-information” label. Human annotators and LLMs alike require positional and structural context within the document to reliably differentiate these cases. Incorporating positional context like sequence order or file placement is an evident possibility to improve classification performance in the future.</p>
+<p>The highly favourable results achieved through LLM-based classification, particularly when contrasted with rule-based techniques, demonstrate that these traditional systems struggle to effectively manage the extensive variability in EPUB construction. Nevertheless, the good performance is partially attributable to methodological simplifications. Specifically, pragmatic constraints necessitated the use of only the broader, upper levels of the controlled vocabulary instead of its complete framework. Further investigation is required to validate these findings against the full vocabulary. An examination of the existing misclassifications offers a pathway for future optimization. The classification errors depicted in the confusion matrix for the top performing model GLM-5 stem from a 7% misclassification of <code>chapter</code> segments as <code>reader-information</code>. Interestingly, this pattern is asymmetric. This occurs because stylistic narrative prose is used in chapters as well as in previews or reading samples, which are grouped under the <code>reader-information</code> label. Human annotators and LLMs alike require positional and structural context within the document to reliably differentiate these cases. Incorporating positional context like sequence order or file placement is an evident possibility to improve classification performance in the future.</p>
 
 
 </section>

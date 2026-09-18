@@ -75,6 +75,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles-playground.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -110,6 +111,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Evaluation</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./publications.pdf"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./team.html"> 
 <span class="menu-text">Team</span></a>
   </li>  
@@ -137,13 +142,22 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="columns">
-<div class="column" style="width:70%;">
+<div class="columns index-page">
+<div class="column" style="width:20%;">
+<div class="index-brand-rail">
+<p><a href="https://www.uni-wuerzburg.de"><img src="images/unilogo4cohne.png" class="img-fluid" style="width:80.0%"></a></p>
+<p><a href="https://www.text-plus.org"><img src="images/textplus_logo_RGB.png" class="img-fluid" style="width:50.0%"></a></p>
+<div class="repository-links">
+<p><a class="repository-link" href="https://github.com/cophi-wue/dimeclass" aria-label="dimeclass GitHub repository" title="dimeclass GitHub repository"><i class="bi bi-github" aria-hidden="true"></i><span>dimeclass</span></a></p>
+<p><a class="repository-link" href="https://github.com/cophi-wue/epub_unpack" aria-label="epub_unpack GitHub repository" title="epub_unpack GitHub repository"><i class="bi bi-github" aria-hidden="true"></i><span>epub_unpack</span></a></p>
+</div>
+</div>
+</div><div class="column index-main-column" style="width:55%;">
 <section id="semantic-upconversion-of-german-dime-novels" class="level2">
 <h2 class="anchored" data-anchor-id="semantic-upconversion-of-german-dime-novels">Semantic Upconversion of German Dime Novels</h2>
 <p>Welcome to the documentation portal for the project “Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek”.</p>
 <p><strong>Context and Scope</strong></p>
-<p>This project was developed at the <a href="https://www.germanistik.uni-wuerzburg.de/computerphilologie/">Chair of Computational Philology</a> at the University of Würzburg in cooperation with the National Research Data Infrastructure (NFDI) consortium <a href="https://text-plus.org/">Text+</a> (01.08.2022 - 30.09.2026). As part of the initiative “Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek”, the project aims at the sematic upconversion of German dime novels. This includes the transformation of commercial EPUB files into standardised and structurally enriched full-text corpora and derived formats (<em>Abgeleitete Textformate</em>, ATF) to enable large-scale text mining and computational literary analysis. The data basis for this project are roughly 35,000 EPUBs of German dime novels fKrom the German National Library (DNB).</p>
+<p>This project was developed at the <a href="https://www.germanistik.uni-wuerzburg.de/computerphilologie/">Chair of Computational Philology</a> at the University of Würzburg in cooperation with the National Research Data Infrastructure (NFDI) consortium <a href="https://text-plus.org/">Text+</a>, spanning from 01.08.2022 to 30.09.2026. As part of the initiative “Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek”, the project aims at the semantic upconversion of German dime novels. This includes the transformation of commercial EPUB files into standardised and structurally enriched full-text corpora and derived formats (<em>Abgeleitete Textformate</em>, ATF) to enable large-scale text mining and computational literary analysis. The data basis for this project are roughly 35,000 EPUBs of German dime novels from the German National Library (DNB).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -158,29 +172,34 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p><strong>Core Problem</strong></p>
-<p>Although commercial EPUBs are born-digital objects with machine-readable text, their internal markup follows no standardised conventions and is typically presentation-oriented rather than semantic. This means that page layouts are simulated via inline CSS and custom attributes (e.g., using generic <code>&lt;p&gt;</code> tags for headings). Moreover, the core narrative chapters are interleaved with various text types like front matter, advertisements and reading samples which makes it difficult to single out specific text times to study. Consequently, to build a research corpus from such highly heterogeneous publisher formats sematic upconversion is necessary.</p>
+<p>Although commercial EPUBs are born-digital objects with machine-readable text, their internal markup follows no standardised conventions and is typically presentation-oriented rather than semantic. This means that page layouts are simulated via inline CSS and custom attributes (e.g., using generic <code>&lt;p&gt;</code> tags for headings). Moreover, the core narrative chapters are interleaved with various text types like front matter, advertisements and reading samples which makes it difficult to single out specific text types to study. Consequently, sematic upconversion is necessary to build a research corpus from such highly heterogeneous publisher formats.</p>
 <p><strong>Project Objectives</strong></p>
 <ul>
 <li>Intermediate representation: Extracting raw EPUB markup into structured, uniform JSON work units for further processing.</li>
 <li>Semantic classification: Identifying narrative main text and paratextual components using open-weight Large Language Models (LLMs) according to a controlled taxonomy.</li>
-<li>TEI-XML Upconversion: Transformation of classified text units into TEI-XML.</li>
+<li>TEI-XML upconversion: Transforming classified text units into TEI-XML.</li>
 </ul>
 <p><strong>Key Achievements</strong></p>
 <ul>
-<li><a href="./guidelines.html">Controlled taxonomy of text types in dime novels</a>: classification of narrative and paratextual components</li>
-<li><a href="./dataset.html">Gold standard dataset</a>: creation of a manually annotated gold standard dataset of 200 text units and corresponding text types</li>
-<li><a href="./evaluation.html">Classification Evaluation</a>: open-weight models (GLM-5, Qwen3.5-397B) achieved a 0.989 Macro F1 score (97.5% accuracy) on the gold standard</li>
-<li><a href="./pipeline.html">JSON extraction at scale</a>: Extracted 35,068 DNB EPUBs into structured JSON</li>
-<li><a href="./pipeline.html#stage-1-from-heterogeneous-epubs-to-normalized-json">Modular pipeline</a>: separation between JSON extraction, heuristic text unit segmentation and LLM labelling</li>
+<li><a href="./guidelines.html">Controlled taxonomy of text types in dime novels</a>: Classification of narrative and paratextual components.</li>
+<li><a href="./dataset.html">Gold standard dataset</a>: Creation of a manually annotated gold standard dataset of 200 text units and corresponding text types.</li>
+<li><a href="./evaluation.html">Classification evaluation</a>: Open-weight models (GLM-5, Qwen3.5-397B) achieved a 0.989 Macro F1 score (97.5% accuracy) on the gold standard.</li>
+<li><a href="./pipeline.html">JSON extraction at scale</a>: Extracted 35,068 DNB EPUBs into structured JSON.</li>
+<li><a href="./pipeline.html#stage-1-from-heterogeneous-epubs-to-normalized-json">Modular pipeline</a>: Separation between JSON extraction, heuristic text unit segmentation and LLM labelling.</li>
 </ul>
-<p>The GitHub repository for this project can be found here: <a href="https://github.com/cophi-wue/dimeclass">dimeclass</a></p>
 </section>
-</div><div class="column" style="width:5%;">
-
 </div><div class="column" style="width:25%;">
-<div style="display: flex; flex-direction: column; align-items: center; gap: 28px; padding-top: 20px;">
-<p><a href="https://www.uni-wuerzburg.de"><img src="images/unilogo4cohne.png" class="img-fluid" style="width:80.0%"></a></p>
-<p><a href="https://www.text-plus.org"><img src="images/textplus_logo_RGB.png" class="img-fluid" style="width:50.0%"></a></p>
+<div class="index-team-list">
+<p><strong>Project team</strong></p>
+<ul>
+<li><a href="./team.html#aidan-belisle">Aidan Belisle</a></li>
+<li><a href="./team.html#fotis-jannidis"><strong>Prof.&nbsp;Dr.&nbsp;Fotis Jannidis</strong></a></li>
+<li><a href="./team.html#thora-hagen">Thora Hagen</a></li>
+<li><a href="./team.html#lennart-keller">Lennart Keller</a></li>
+<li><a href="./team.html#leonard-konle">Leonard Konle</a></li>
+<li><a href="./team.html#lilli-moutschka">Lilli Moutschka</a></li>
+<li><a href="./team.html#marina-spielberg">Marina Spielberg</a></li>
+</ul>
 </div>
 </div>
 </div>

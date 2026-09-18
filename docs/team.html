@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0cfe7a3482e0d49a74229a8f3b76718.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,6 +75,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles-playground.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -110,6 +111,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Evaluation</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./publications.pdf"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./team.html" aria-current="page"> 
 <span class="menu-text">Team</span></a>
   </li>  
@@ -141,49 +146,59 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="project-team">Project Team</h2>
 <div class="team-section team-leadership">
 <p><strong>Project Leadership and Supervision</strong></p>
-<div class="team-card team-card-lead">
+<div id="fotis-jannidis" class="team-card team-card-lead">
 <p><strong>Prof.&nbsp;Dr.&nbsp;Fotis Jannidis</strong><br>
 Chair of Computational Philology, University of Würzburg<br>
-<a href="https://www.germanistik.uni-wuerzburg.de/computerphilologie/team/jannidis/">Contact</a></p>
+<a href="https://www.germanistik.uni-wuerzburg.de/computerphilologie/team/jannidis/" class="contact-link">Contact</a> · <a href="https://orcid.org/0000-0001-6944-6113" class="orcid-link">ORCID</a></p>
 </div>
 </div>
 <div class="team-section">
-<p><strong>Development &amp; Research</strong></p>
+<p><strong>Development and Research</strong></p>
 <div class="team-grid">
-<div class="team-card team-card-featured">
-<p><strong>Marina Spielberg</strong></p>
-<p><em>Contributions:</em> Development of the heuristic chunking workflow, prompt engineering for text type classification, LLM benchmarking and evaluation, corpus analysis, annotation tool creation, gold-standard manual annotation, upgrading <code>epub_unpack</code>for HPC-based processing, documentation website creation.</p>
+<div id="marina-spielberg" class="team-card team-card-featured">
+<p><strong>Marina Spielberg</strong> <a href="https://orcid.org/0009-0006-6924-0485" class="orcid-link">ORCID</a></p>
+<p><em>Contributions:</em> Development of the heuristic chunking workflow, prompt engineering for text type classification, LLM benchmarking and evaluation, corpus analysis, annotation tool creation, gold-standard manual annotation, upgrading <code>epub_unpack</code> for HPC-based processing, project website creation.</p>
+<div class="project-period">
 <p><em>Project Period:</em> 15.05.2025-30.09.2026</p>
-<p><em>Contact/Affiliation:</em> <a href="https://orcid.org/0009-0006-6924-0485">ORCID</a></p>
 </div>
-<div class="team-card">
+<p><em>Affiliation:</em> University Würzburg</p>
+</div>
+<div id="leonard-konle" class="team-card">
 <p><strong>Leonard Konle</strong></p>
 <p><em>Contributions:</em> Deployment of open-weight LLMs via Hugging Face/vLLM on the TU Dresden HPC cluster and tensor parallelism scaling.</p>
-<p><em>Project Period:</em></p>
-<p><em>Contact/Affiliation:</em> University Würzburg</p>
+<div class="project-period">
+<p><em>Project Period:</em> 01.08.2022-30.09.2026</p>
 </div>
-<div class="team-card">
+<p><em>Affiliation:</em> University Würzburg</p>
+</div>
+<div id="lennart-keller" class="team-card">
 <p><strong>Lennart Keller</strong></p>
 <p><em>Contributions:</em> Development of the <code>epub_unpack</code> extraction tool and type inference heuristics.</p>
-<p><em>Project Period: 01.01.2023-31.03.2024</em></p>
-<p><em>Contact/Affiliation:</em> University Würzburg</p>
+<div class="project-period">
+<p><em>Project Period:</em> 01.06.2024-31.12.2024</p>
 </div>
-<div class="team-card">
+<p><em>Affiliation:</em> University Würzburg</p>
+</div>
+<div id="thora-hagen" class="team-card">
 <p><strong>Thora Hagen</strong></p>
 <p><em>Contributions:</em> Development of the TF-IDF Bag-of-Words classification baselines.</p>
-<p><em>Project Period:</em></p>
-<p><em>Contact/Affiliation:</em> University Würzburg</p>
+<div class="project-period">
+<p><em>Project Period:</em> 01.06.2024-31.12.2024</p>
+</div>
+<p><em>Affiliation:</em> University Würzburg</p>
 </div>
 </div>
 </div>
 <div class="team-section team-assistants">
 <p><strong>Student Research Assistants</strong></p>
 <div class="team-grid team-grid-compact">
-<div class="team-card">
-<p><strong>Aidan Belisle</strong>, University Würzburg (Gold-standard manual annotation)</p>
+<div id="aidan-belisle" class="team-card">
+<p><strong>Aidan Belisle</strong>, University Würzburg<br>
+Gold-standard manual annotation</p>
 </div>
-<div class="team-card">
-<p><strong>Lilli Moutschka</strong>, University Würzburg (EPUB semantic structure annotation)</p>
+<div id="lilli-moutschka" class="team-card">
+<p><strong>Lilli Moutschka</strong>, University Würzburg<br>
+EPUB semantic structure annotation</p>
 </div>
 </div>
 </div>

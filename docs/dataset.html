@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0cfe7a3482e0d49a74229a8f3b76718.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -78,6 +78,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles-playground.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -111,6 +112,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./evaluation.html"> 
 <span class="menu-text">Evaluation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.pdf"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./team.html"> 
@@ -154,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="corpus-description" class="level2">
 <h2 class="anchored" data-anchor-id="corpus-description">Corpus Description</h2>
-<p>Due to German copyright law of commercial e-books, full-text datasets, gold standards, or intermediate text formats cannot be published or distributed. To provide an insight into the characteristics of the corpus, this page provides an overview of the data used in this project including a structural analysis of publisher markup as well as a tag frequency analysis.</p>
+<p>Due to German copyright law of commercial e-books, full-text datasets, gold standards or intermediate text formats cannot be published or distributed. To provide an insight into the characteristics of the corpus, this page provides an overview of the data used in this project including a structural analysis of publisher markup as well as a tag frequency analysis.</p>
 </section>
 <section id="corpus-overview" class="level2">
 <h2 class="anchored" data-anchor-id="corpus-overview">Corpus Overview</h2>
@@ -177,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Differences between publishers (examples):</p>
 <ul>
 <li><strong>Bastei Entertainment:</strong> Bastei Entertainment uses a consistent but non-semantic styling system. Headings and scene transitions are often marked using specific paragraph rendering classes (e.g., <code>&lt;p rend="standard-leerzeile"&gt;</code> to denote paragraph spacing or <code>&lt;p rend="p" style="text-align: center;"&gt;</code> for centered paragraph blocks.</li>
-<li><strong>Cora and HarperCollins (184 Books):</strong> These publishers use highly inconsistent, divergent visual encodings. Translating these files requires mapping a long tail of volatile CSS classes and inline style definitions.</li>
+<li><strong>Cora and HarperCollins:</strong> These publishers use highly inconsistent, divergent visual encodings. Translating these files requires mapping a long tail of volatile CSS classes and inline style definitions.</li>
 </ul>
 <p>Differences of encoding conventions (examples):</p>
 <ul>
@@ -201,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="project-considerations" class="level2">
 <h2 class="anchored" data-anchor-id="project-considerations">Project Considerations</h2>
-<p>To stay within LLM context windows without losing semantic context, we decided against arbitrary token-length splitting. Instead, we opted for a hybrid approach <a href="./pipeline.html">pipeline</a>, in which the smallest units of text (individual chapters and paratexts containing up to 25,000 tokens) are extracted and passed as input to a model alongside a detailed prompt for text type classification.</p>
+<p>To stay within LLM context windows without losing semantic context, we decided against arbitrary token-length splitting. Instead, we opted for a hybrid approach <a href="./pipeline.html">pipeline</a>, in which the smallest units of text (individual chapters and paratexts) are extracted and passed as input to a model alongside a detailed prompt for text type classification.</p>
 
 
 </section>

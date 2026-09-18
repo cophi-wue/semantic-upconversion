@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0cfe7a3482e0d49a74229a8f3b76718.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -113,6 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="styles-playground.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -146,6 +147,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="./evaluation.html"> 
 <span class="menu-text">Evaluation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.pdf"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./team.html"> 
@@ -196,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="upconversion-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="upconversion-workflow">Upconversion Workflow</h2>
-<p>This page documents the upconversion workflow which is made up of three steps.</p>
+<p>This page documents the upconversion workflow which is made up of three steps. Below is a brief description of the three stages of the workflow. The following sections provide more details on each stage.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/semantic_upconversion_pipeline.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Overview of the semantic upconversion pipeline in three stages: Heuristic extraction and segmentation, text type classification and rule-based TEI conversion."><img src="images/semantic_upconversion_pipeline.png" class="img-fluid figure-img" style="width:50.0%" alt="Overview of the semantic upconversion pipeline in three stages: Heuristic extraction and segmentation, text type classification and rule-based TEI conversion."></a></p>
@@ -204,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p><strong>Stage 1: Preprocessing: Heuristic Extraction &amp; Segmentation</strong></p>
-<p>Stage one transforms the heterogenous EPUB files into a structured JSON format with the tool <code>epub_unpack</code> and heuristically chunks the text into content units. The tool was executed on the Dresden HPC infrastructure transforming 35,068 DNB EPUBS into JSON. While this confirmed the technical stability of the extraction pipeline, systematic evaluation of the semantic consistency and structural validity of the resulting JSON files remains an ongoing task.</p>
+<p>Stage one transforms the heterogenous EPUB files into a structured JSON format with the python tool <code>epub_unpack</code> and heuristically chunks the text into content units. The tool was executed on the Dresden HPC infrastructure transforming 35,068 DNB EPUBS into JSON. While this confirmed the technical stability of the extraction pipeline, systematic evaluation of the semantic consistency and structural validity of the resulting JSON files remains an ongoing task.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -215,20 +220,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There a number of TEI to EPUB conversion tools available, but we could not find a suitable open-source tool for the reverse direction (EPUB to TEI). An initial idea was to check if we could reuse parts of the XSLT conversion structure used by the IDS in their <a href="https://github.com/KorAP/deliko">Epub to KorAP (via TEI I5) conversion project</a> (see the article <a href="https://zenodo.org/records/14943116">“National Library as Corpus: Introducing DeLiKo@DNB – a Large Synchronous German Fiction Corpus”</a>). Upon closer inspection of their TEI conversion logic we decided that their approach does not fit the needs of our data structure. Since their TEI I5 schema is build around specific needs for linguistic data it would differ much from our dime novel data. Furthermore, the conversion uses Saxon EE which would lead to unwanted dependencies. So we decided to continue developing our own EPUB to JSON converter, which serves as a middle processing step to the final TEI conversion.</p>
+<p>There are a number of TEI to EPUB conversion tools available, but we could not find a suitable open-source tool for the reverse direction (EPUB to TEI). An initial idea was to check if we could reuse parts of the XSLT conversion structure used by the IDS in their <a href="https://github.com/KorAP/deliko">Epub to KorAP (via TEI I5) conversion project</a> (see the article <a href="https://zenodo.org/records/14943116">“National Library as Corpus: Introducing DeLiKo@DNB – a Large Synchronous German Fiction Corpus”</a>). Upon closer inspection of their TEI conversion logic we decided that their approach does not fit the needs of our data structure. Since their TEI I5 schema is build around specific needs for linguistic data it would differ much from our dime novel data. Furthermore, the conversion uses Saxon EE which would lead to unwanted dependencies. So we decided to continue developing our own EPUB to JSON converter, which serves as a middle processing step to the final TEI conversion.</p>
 </div>
 </div>
 <p><strong>Stage 2: Semantic LLM Classification</strong></p>
 <p>Stage two uses a Large Language Model (LLM) to assign these segments to text types from a controlled <a href="./guidelines.html#label-taxonomy">taxonomy</a>.</p>
 <p><strong>Stage 3: Post-processing: TEI Transformation &amp; Serialisation (Outlook)</strong></p>
-<p>Stage three executes a rule-based conversion into TEI. This step is planned. Ultimately, the goal is to apply this complete pipeline to all relevant dime novels in the German National Library (DNB) comprising over 35,000 EPUBs, which will enable subsequent large-scale computational analysis of both the narrative text and its paratextual surroundings.</p>
+<p>Stage three executes a rule-based conversion into TEI. This step is planned for the future. Ultimately, the goal is to apply this complete pipeline to all relevant dime novels in the German National Library (DNB) comprising over 35,000 EPUBs, which will enable subsequent large-scale computational analysis of both the narrative text and its paratextual surroundings.</p>
 </section>
 <section id="stage-1-from-heterogeneous-epubs-to-normalized-json" class="level2">
 <h2 class="anchored" data-anchor-id="stage-1-from-heterogeneous-epubs-to-normalized-json">Stage 1: From Heterogeneous EPUBs to Normalized JSON</h2>
-<p><code>epub_unpack</code> converts EPUB files from different publishers into a common, machine-readable JSON structure. It is designed for both local computer use and large-scale processing on Slurm-based HPC infrastructure.</p>
+<p><code>epub_unpack</code> converts EPUB files from different publishers into a common, machine-readable JSON structure. It is designed for both local computer use and large-scale processing on a Slurm-based HPC infrastructure.</p>
 <p>The tool can:</p>
 <ul>
-<li>process a single EPUB or recursively scan directories</li>
+<li>process single and mulivolume EPUBs</li>
 <li>skip already processed books for resumable workflows</li>
 <li>create per-book output files, processing and error reports</li>
 </ul>
@@ -242,21 +247,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="images/flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Flowchart of the epub-unpack workflow."><img src="images/flowchart.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:86.0%" alt="Flowchart of the epub-unpack workflow."></a></p>
 </figure>
 </div>
-<figcaption>Flowchart of the epub-unpack workflow.</figcaption>
+<figcaption>Flowchart of the <code>epub-unpack</code> workflow.</figcaption>
 </figure>
 </div>
 <p>For each EPUB, the tool:</p>
 <ul>
-<li><p>reads package metadata from the OPF file;</p></li>
-<li><p>compares the OPF spine with the NCX table of contents;</p></li>
-<li><p>inserts missing spine documents into the navigation structure;</p></li>
-<li><p>resolves links using original, fragment-free and decoded href variants;</p></li>
-<li><p>parses HTML with tolerant parsers;</p></li>
-<li><p>extracts comparable metadata such as titles and headings;</p></li>
-<li><p>removes duplicate references to the same document;</p></li>
-<li><p>stores all books using the same JSON schema.</p></li>
+<li><p>reads package metadata from the OPF file</p></li>
+<li><p>compares the OPF spine with the NCX table of contents</p></li>
+<li><p>inserts missing spine documents into the navigation structure</p></li>
+<li><p>resolves links using original, fragment-free and decoded href variants</p></li>
+<li><p>parses HTML with tolerant parsers</p></li>
+<li><p>extracts comparable metadata such as titles and headings</p></li>
+<li><p>removes duplicate references to the same document</p></li>
+<li><p>stores all books using the same JSON schema</p></li>
 </ul>
-<p>This creates a consistent output format even when publishers differ in their EPUB packaging. The process is not lossless: malformed files, missing package documents or unresolvable links may still result in omitted or imperfectly interpreted content.</p>
+<p>This creates a consistent output format even when EPUB packaging differs across publishers. The process is not lossless: malformed files, missing package documents or unresolvable links may still result in omitted or imperfectly interpreted content.</p>
 </section>
 <section id="json-output" class="level3">
 <h3 class="anchored" data-anchor-id="json-output">JSON Output</h3>
@@ -289,13 +294,13 @@ JSON Output
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"html_title"</span><span class="fu">:</span> <span class="st">"Chapter 1"</span><span class="fu">,</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"body_titles"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Chapter 1"</span><span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"inferred-type"</span><span class="fu">:</span> <span class="st">"chapter"</span><span class="fu">,</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"..."</span><span class="fu">,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"This is the text of chapter 1..."</span><span class="fu">,</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"is_narrative"</span><span class="fu">:</span> <span class="kw">true</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<p>The <code>content</code> array follows the EPUB’s table-of-contents hierarchy.</p>
+<p>The <code>content</code> array follows the EPUB’s table-of-contents hierarchy and the <code>text</code> array contains the actual text of each content block.</p>
 <p>Important fields include:</p>
 <table class="caption-top table">
 <colgroup>
@@ -311,43 +316,43 @@ JSON Output
 <tbody>
 <tr class="odd">
 <td><code>epub_metadata</code></td>
-<td>Metadata read from the EPUB’s OPF package document</td>
+<td>Metadata read from the EPUB’s OPF package document.</td>
 </tr>
 <tr class="even">
 <td><code>toc_repair</code></td>
-<td>Whether missing spine documents had to be added to the TOC</td>
+<td>Whether missing spine documents had to be added to the TOC.</td>
 </tr>
 <tr class="odd">
 <td><code>contain_subsections</code></td>
-<td>Whether the TOC contains structural sections</td>
+<td>Whether the TOC contains structural sections.</td>
 </tr>
 <tr class="even">
 <td><code>href</code></td>
-<td>Original navigation link</td>
+<td>Original navigation link.</td>
 </tr>
 <tr class="odd">
 <td><code>href_clean</code></td>
-<td>Link with any fragment identifier removed</td>
+<td>Link with any fragment identifier removed.</td>
 </tr>
 <tr class="even">
 <td><code>title</code></td>
-<td>Title supplied by the EPUB navigation</td>
+<td>Title supplied by the EPUB navigation.</td>
 </tr>
 <tr class="odd">
 <td><code>html_title</code></td>
-<td>Content of the HTML <code>&lt;title&gt;</code> element</td>
+<td>Content of the HTML <code>&lt;title&gt;</code> element.</td>
 </tr>
 <tr class="even">
 <td><code>body_titles</code></td>
-<td>Text from <code>&lt;h1&gt;</code> to <code>&lt;h5&gt;</code> headings</td>
+<td>Text from <code>&lt;h1&gt;</code> to <code>&lt;h5&gt;</code> headings.</td>
 </tr>
 <tr class="odd">
 <td><code>inferred-type</code></td>
-<td>Rule-based semantic label such as chapter, cover, or novel</td>
+<td>Rule-based semantic label such as chapter, cover, or novel.</td>
 </tr>
 <tr class="even">
 <td><code>is_narrative</code></td>
-<td>BoW Classifier prediction for whether the block contains narrative text</td>
+<td>BoW Classifier prediction for whether the block contains narrative text.</td>
 </tr>
 </tbody>
 </table>
@@ -357,17 +362,17 @@ JSON Output
 <p>The tool applies two complementary classification methods.</p>
 <p>First, a rule-based system assigns <code>inferred-type</code> using:</p>
 <ul>
-<li><p>the navigation title;</p></li>
-<li><p>the filename;</p></li>
-<li><p>numbering patterns;</p></li>
-<li><p>selected words such as “Kapitel”, “Prolog”, “Impressum”, or “Cover”;</p></li>
-<li><p>the content ending with indicators such as “Ende”.</p></li>
+<li><p>the navigation title</p></li>
+<li><p>the filename</p></li>
+<li><p>numbering patterns</p></li>
+<li><p>selected words such as “Kapitel”, “Prolog”, “Impressum”, or “Cover”</p></li>
+<li><p>the content ending with indicators such as “Ende”</p></li>
 </ul>
-<p>Second, a trained Bag of Words text classifier assigns <code>is_narrative</code>. This distinguishes narrative passages from material such as title pages, tables of contents, advertisements, front matter, and metadata pages.</p>
+<p>Second, a trained Bag of Words text classifier assigns <code>is_narrative</code>. This distinguishes narrative passages from material such as title pages, tables of contents, advertisements, front matter and metadata pages.</p>
 </section>
 <section id="smallest-content-unit" class="level3">
 <h3 class="anchored" data-anchor-id="smallest-content-unit">Smallest Content Unit</h3>
-<p>The smallest text-bearing unit is one complete XHTML or HTML file contained in the EPUB. The tool does not normally split a file into individual paragraphs, scenes, or sentences. The unit size is therefore determined by the publisher’s EPUB packaging:</p>
+<p>The smallest text-bearing unit is one complete XHTML or HTML file contained in the EPUB. The tool does not split a file into individual paragraphs, scenes or sentences. The unit size is determined by the publisher’s EPUB packaging:</p>
 <ul>
 <li><p>one file may contain one chapter</p></li>
 <li><p>one file may contain an entire novel</p></li>
@@ -377,7 +382,7 @@ JSON Output
 </section>
 <section id="text-chunking" class="level3">
 <h3 class="anchored" data-anchor-id="text-chunking">Text chunking</h3>
-<p>To stay within LLM context windows without losing semantic context, we avoided arbitrary token-length splitting. Instead, our pipeline utilizes a heuristic segmentation strategy which divides the ebook into segments before classification and TEI conversion. This makes the workflow reproducible: every chunk can be processed, inspected, reprocessed and stored independently.</p>
+<p>To stay within LLM context windows without losing semantic context, we avoided arbitrary token-length splitting (see <a href="./dataset.html#tag-frequency-analysis">Tag-Frequeny Analysis</a> for more details). Instead, our pipeline utilises a heuristic segmentation strategy, which divides the ebook into segments before classification and TEI conversion. This makes the workflow reproducible: every chunk can be processed, inspected, reprocessed and stored independently.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -392,7 +397,7 @@ JSON Output
 <tbody>
 <tr class="odd">
 <td><strong>Explicit chapter</strong></td>
-<td>Creates a new chunk whenever the text has an inferred_type “chapter” label from <code>epub_unpack</code>. Asterisk delimiters inside chapters are considered as scene breaks and not further segmented.</td>
+<td>Creates a new chunk whenever the text has an inferred_type “chapter” label from <code>epub_unpack</code>. Asterisk delimiters inside chapters are considered as scene breaks and are not further segmented.</td>
 </tr>
 <tr class="even">
 <td><strong>Implicit stars</strong></td>
@@ -408,7 +413,7 @@ JSON Output
 </tr>
 <tr class="odd">
 <td><strong>Novel no separator</strong></td>
-<td>If an EPUB consists of a single, continuous narrative block with no internal layout boundaries inside one content key of <code>epub_unpack</code>, a warning is issued and it will be held back from further processing.</td>
+<td>Issues a warning if an EPUB consists of a single, continuous narrative block with no internal layout boundaries inside one content key of <code>epub_unpack</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -488,7 +493,7 @@ JSON Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A total of 42 novels lacked internal structural delimiters or chapter headings entirely, causing the entire narrative body to remain in a single text block. These files are incompatible with the current chunk-level segmentation pipeline, as processing them would require passing the full text into an LLM context window at once, which was not yet evaluated within this framework and reserved for future pipeline iterations.</p>
+<p>A total of 42 novels lacked internal structural delimiters or chapter headings entirely, causing the entire narrative body to remain in a single text block. These files are incompatible with the current chunk-level segmentation pipeline and are stored separately for future processing.</p>
 </div>
 </div>
 </section>
@@ -555,10 +560,11 @@ Prompt
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- converted chunk content --&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">div</span>&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
-<li>The LLM receives the chunk text in a separate request and converts it into TEI markup. It generates only the content inside the <code>&lt;div&gt;</code> wrapper, not the surrounding.</li>
+<li>The LLM receives the chunk text in a separate request and converts it into TEI markup. It transforms only the content inside the <code>&lt;div&gt;</code> wrapper, not the surrounding.</li>
 <li>The chunks belonging to one novel are sorted by source position and a full TEI tree with an <code>teiHeader</code>is compiled.</li>
 <li>The generated document is checked for valid XML before it is saved.</li>
 </ol>
+<p>A manually transformed TEI example was created to serve as a reference for future transformations.</p>
 
 
 </section>

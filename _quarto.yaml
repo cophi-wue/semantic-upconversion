@@ -28,6 +28,7 @@ website:
 
 format:
   html:
-    theme: cosmo        # Other options: cosmo, flatly, litera, lumen, sandstone, materia
+    theme: cosmo
+    css: styles-playground.css
     toc: false
     lightbox: true

@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0cfe7a3482e0d49a74229a8f3b76718.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -78,6 +78,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles-playground.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -111,6 +112,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./evaluation.html"> 
 <span class="menu-text">Evaluation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.pdf"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./team.html"> 
@@ -160,14 +165,15 @@ ul.task-list li input[type="checkbox"] {
 <p>The classification of text segments in commercial dime novels sits on a spectrum between two strategic extremes:</p>
 <ul>
 <li><p><strong>Binary Approach:</strong> Dividing the core narrative from the non-narrative paratextual elements can be profitable since the main text is usually the target of analysis. While computationally simple, this method discards the range of paratext needed for diverse research interests.</p></li>
-<li><p><strong>Multi-Class Approach:</strong> Categorising all fine-grained text types causes models and human annotators alike to fail on ambiguous boundaries where stylistic narrative prose is used in chapters as well as in paratexts like previews or reading samples</p></li>
+<li><p><strong>Multi-Class Approach:</strong> Categorising all fine-grained text types causes models and human annotators alike to fail on ambiguous boundaries where stylistic narrative prose is used in chapters as well as in paratexts like previews or reading samples.</p></li>
 </ul>
-<p>For pragmatic research interests we implemented a middle ground along this spectrum. In this two-tier hierarchy, the primary level isolates the main narrative core as well as categories that are of interest in our project, while a mandatory secondary level called <code>reader-information</code> groups ambiguous paratexts that are not essential to our project needs as subtypes.</p>
+<p>For pragmatic research interests we implemented a middle ground along this spectrum. In our two-tier hierarchy the primary level isolates the main narrative core as well as categories that are of interest in our project, while a mandatory secondary level called <code>reader-information</code> groups ambiguous paratexts that are not essential to our project needs as subtypes.</p>
 </section>
 <section id="label-taxonomy" class="level2">
 <h2 class="anchored" data-anchor-id="label-taxonomy">Label Taxonomy</h2>
 <section id="main-labels" class="level3">
 <h3 class="anchored" data-anchor-id="main-labels">Main Labels</h3>
+<p>Each text segment is assigned one of the following labels:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 23%">
@@ -214,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><code>unknown</code></td>
-<td>No segment fits the above categories.</td>
+<td>None of the above categories fit the segment.</td>
 </tr>
 </tbody>
 </table>
@@ -264,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td><code>other</code></td>
-<td>No segment fits the above categories.</td>
+<td>None of the above categories fit the segment.</td>
 </tr>
 </tbody>
 </table>
@@ -274,9 +280,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="edge-cases">Edge Cases</h2>
 <p>Testing the vocabulary with human annotators and LLMs revealed the following ambiguities regarding differentiation of labels:</p>
 <ul>
-<li><p><strong>Ambiguity in narrative prose:</strong> Reading samples and framing present identical linguistic, syntactical, and stylistic features to regular novel chapters. Without positional or contextual cues, both human annotators and LLMs frequently misclassified them as chapters.</p></li>
-<li><p><strong>Overlap between Advertisement vs.&nbsp;meta-information:</strong> Promotional announcements and series plot summaries often overlap making it challenging to distinguish between advertisement and meta-information challenging.</p></li>
-<li><p><strong>Framing vs.&nbsp;beginning of the story:</strong> In some instances, the framing of the novel includes the beginning main narrative. To protect the narrative from paratexual segments, we adopt a conservative annotation policy by categorising the entire segment as <code>framing</code>. This decision prioritises precision over recall, while accepting possible minor loss of the opening narrative sentences to ensure that no noise is introduced into the main narrative to enable clean downstream computational analysis of the main text.</p></li>
+<li><p><strong>Ambiguity in narrative prose:</strong> <code>Preview</code> and <code>framing</code> present identical linguistic, syntactical and stylistic features to regular novel chapters. Without positional or contextual cues, both human annotators and LLMs frequently misclassified them as chapters.</p></li>
+<li><p><strong>Overlap between <code>advertisement</code> vs.&nbsp;<code>meta-information</code>:</strong> Promotional announcements and series plot summaries often overlap making it challenging to distinguish between advertisement and meta-information.</p></li>
+<li><p><strong><code>Framing</code> vs.&nbsp;beginning of the story:</strong> In some instances, the framing of the novel includes the beginning main narrative. To protect the narrative from paratexual segments, we adopt a conservative annotation policy by categorising the entire segment as <code>framing</code>. This decision prioritises precision over recall, while accepting possible minor loss of the opening narrative sentences to ensure that no noise is introduced into the main narrative to enable clean downstream computational analysis of the main text.</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
