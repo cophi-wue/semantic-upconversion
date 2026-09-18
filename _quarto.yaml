@@ -32,3 +32,4 @@ format:
     css: styles.css
     toc: false
     lightbox: true
+    include-after-body: lightbox-history.html
