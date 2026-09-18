@@ -274,6 +274,10 @@ figure img {
   box-shadow: var(--playground-shadow);
 }
 
+.glightbox-container .gslide-description {
+  display: none !important;
+}
+
 figcaption {
   max-width: 70ch;
   margin: 0.75rem auto 0;
