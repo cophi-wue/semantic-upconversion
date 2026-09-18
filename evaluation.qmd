@@ -12,9 +12,9 @@ To identify the best model for the classification task and to determine the qual
 
 The classification of text types in dime novels poses an inherent class imbalance problem. Their narrative body accounts for most of all content segments. A random test sample would result in a dataset dominated by story chapters.
 
-To counter this issue, we created a stratified sample. From 25 novels (1071 segments) of the [test corpus](dataset.qmd) from different series and publishers all non-chapter chunks were taken (134 in total). To reach 200 text chunks the remaining 67 segments were filled with randomly taken chapters from the same pool of novels.
+To counter this issue, we created a stratified sample. From 25 novels (1071 segments) of the [test corpus](dataset.qmd), which include different series and publishers, all non-chapter chunks were taken (134 in total). To reach 200 text chunks the remaining 67 segments were filled with randomly taken chapters from the same pool of novels.
 
-![Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. Reader-information was later renamed to “meta-information”.](images/gold_set_distribution_round1.png){width="70%"}
+![Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. `reader-information` was later renamed to `meta-information`.](images/gold_set_distribution_round1.png){width="70%"}
 
 ## Annotation Workflow
 
@@ -36,7 +36,7 @@ While moonshotai_kimi-k2 achieved the highest accuracy (90.0%), its Macro F1-sco
 
 ## Evaluation: Round 2
 
-To resolve these boundary conflicts, we restructured the vocabulary into a two-tier taxonomy [link to taxonomy page](guidelines.qmd#label-taxonomy) of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models.
+To resolve these boundary conflicts, we restructured the vocabulary into a two-tier [taxonomy](guidelines.qmd#label-taxonomy) of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models.
 
 ![Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information.](images/gold_set_distribution_round2.png){width="70%"}
 
@@ -57,7 +57,7 @@ The table below displays the classification results of the second evaluation run
 
 ![Confusion matrix for GLM-5 across primary taxonomy labels.](images/cm_z-ai_glm-5.png){width="70%"}
 
-GLM-5/ and Qwen3.5-397B achieved a primary classification accuracy of 97.5% and a Macro F1-score of 0.989.
+GLM-5 and Qwen3.5-397B achieved a primary classification accuracy of 97.5% and a Macro F1-score of 0.989.
 
 The gpt-oss-120b model climbed from 89.5% in the first evaluation pass to 98.0% (with the Macro F1-score rising from 0.813 to 0.951).
 
@@ -65,4 +65,4 @@ The rule-based baseline (inferred_type) generated through the `epub_unpack` tool
 
 ## Discussion
 
-The highly favourable results achieved through LLM-based classification, particularly when contrasted with rule-based techniques, demonstrate that these traditional systems struggle to effectively manage the extensive variability in EPUB construction. Nevertheless, the good performance is partially attributable to methodological simplifications. Specifically, pragmatic constraints necessitated the use of only the broader, upper levels of the controlled vocabulary instead of its complete framework. Further investigation is required to validate these findings against the full vocabulary. An examination of the existing misclassifications offers also a pathway for future optimization. The classification errors depicted in the confusion matrix for the top performing model GLM-5 stem from a 7% misclassification of “chapter” segments as “reader-information”. Interestingly, this pattern is asymmetric. This occurs because stylistic narrative prose is used in chapters as well as in previews or reading samples, which are grouped under the “reader-information” label. Human annotators and LLMs alike require positional and structural context within the document to reliably differentiate these cases. Incorporating positional context like sequence order or file placement is an evident possibility to improve classification performance in the future.
+The highly favourable results achieved through LLM-based classification, particularly when contrasted with rule-based techniques, demonstrate that these traditional systems struggle to effectively manage the extensive variability in EPUB construction. Nevertheless, the good performance is partially attributable to methodological simplifications. Specifically, pragmatic constraints necessitated the use of only the broader, upper levels of the controlled vocabulary instead of its complete framework. Further investigation is required to validate these findings against the full vocabulary. An examination of the existing misclassifications offers a pathway for future optimization. The classification errors depicted in the confusion matrix for the top performing model GLM-5 stem from a 7% misclassification of `chapter` segments as `reader-information`. Interestingly, this pattern is asymmetric. This occurs because stylistic narrative prose is used in chapters as well as in previews or reading samples, which are grouped under the `reader-information` label. Human annotators and LLMs alike require positional and structural context within the document to reliably differentiate these cases. Incorporating positional context like sequence order or file placement is an evident possibility to improve classification performance in the future. 

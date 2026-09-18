@@ -6,17 +6,19 @@ title-block: false
 
 ## Upconversion Workflow
 
-This page documents the upconversion workflow which is made up of three steps.
+This page documents the upconversion workflow which is made up of three steps. Below is a brief description of the three stages of the workflow. The following sections provide more details on each stage.
 
 ![Overview of the semantic upconversion pipeline in three stages: Heuristic extraction and segmentation, text type classification and rule-based TEI conversion.](images/semantic_upconversion_pipeline.png){width="50%"}
 
+
+
 **Stage 1: Preprocessing: Heuristic Extraction & Segmentation**
 
-Stage one transforms the heterogenous EPUB files into a structured JSON format with the tool `epub_unpack` and heuristically chunks the text into content units. The tool was executed on the Dresden HPC infrastructure transforming 35,068 DNB EPUBS into JSON. While this confirmed the technical stability of the extraction pipeline, systematic evaluation of the semantic consistency and structural validity of the resulting JSON files remains an ongoing task.
+Stage one transforms the heterogenous EPUB files into a structured JSON format with the python tool `epub_unpack` and heuristically chunks the text into content units. The tool was executed on the Dresden HPC infrastructure transforming 35,068 DNB EPUBS into JSON. While this confirmed the technical stability of the extraction pipeline, systematic evaluation of the semantic consistency and structural validity of the resulting JSON files remains an ongoing task.
 
 ::: callout-note
 ## Why developing an EPUB extraction tool from scratch?
-There a number of TEI to EPUB conversion tools available, but we could not find a suitable open-source tool for the reverse direction (EPUB to TEI).
+There are a number of TEI to EPUB conversion tools available, but we could not find a suitable open-source tool for the reverse direction (EPUB to TEI).
 An initial idea was to check if we could reuse parts of the XSLT conversion structure used by the IDS in their [Epub to KorAP (via TEI I5) conversion project](https://github.com/KorAP/deliko) (see the article ["National Library as Corpus: Introducing DeLiKo\@DNB – a Large Synchronous German Fiction Corpus"](https://zenodo.org/records/14943116)). Upon closer inspection of their TEI conversion logic we decided that their approach does not fit the needs of our data structure. Since their TEI I5 schema is build around specific needs for linguistic data it would differ much from our dime novel data. Furthermore, the conversion uses Saxon EE which would lead to unwanted dependencies. So we decided to continue developing our own EPUB to JSON converter, which serves as a middle processing step to the final TEI conversion.
 :::
 
@@ -26,15 +28,15 @@ Stage two uses a Large Language Model (LLM) to assign these segments to text typ
 
 **Stage 3: Post-processing: TEI Transformation & Serialisation (Outlook)**
 
-Stage three executes a rule-based conversion into TEI. This step is planned. Ultimately, the goal is to apply this complete pipeline to all relevant dime novels in the German National Library (DNB) comprising over 35,000 EPUBs, which will enable subsequent large-scale computational analysis of both the narrative text and its paratextual surroundings.
+Stage three executes a rule-based conversion into TEI. This step is planned for the future. Ultimately, the goal is to apply this complete pipeline to all relevant dime novels in the German National Library (DNB) comprising over 35,000 EPUBs, which will enable subsequent large-scale computational analysis of both the narrative text and its paratextual surroundings.
 
 ## Stage 1: From Heterogeneous EPUBs to Normalized JSON
 
-`epub_unpack` converts EPUB files from different publishers into a common, machine-readable JSON structure. It is designed for both local computer use and large-scale processing on Slurm-based HPC infrastructure.
+`epub_unpack` converts EPUB files from different publishers into a common, machine-readable JSON structure. It is designed for both local computer use and large-scale processing on a Slurm-based HPC infrastructure.
 
 The tool can:
 
-- process a single EPUB or recursively scan directories
+- process single and mulivolume EPUBs
 - skip already processed books for resumable workflows
 - create per-book output files, processing and error reports
 
@@ -42,27 +44,27 @@ The tool can:
 
 <br>
 
-![Flowchart of the epub-unpack workflow.](images/flowchart.png){fig-align="left" width="86%"}
+![Flowchart of the `epub-unpack` workflow.](images/flowchart.png){fig-align="left" width="86%"}
 
 For each EPUB, the tool:
 
-- reads package metadata from the OPF file;
+- reads package metadata from the OPF file
 
-- compares the OPF spine with the NCX table of contents;
+- compares the OPF spine with the NCX table of contents
 
-- inserts missing spine documents into the navigation structure;
+- inserts missing spine documents into the navigation structure
 
-- resolves links using original, fragment-free and decoded href variants;
+- resolves links using original, fragment-free and decoded href variants
 
-- parses HTML with tolerant parsers;
+- parses HTML with tolerant parsers
 
-- extracts comparable metadata such as titles and headings;
+- extracts comparable metadata such as titles and headings
 
-- removes duplicate references to the same document;
+- removes duplicate references to the same document
 
-- stores all books using the same JSON schema.
+- stores all books using the same JSON schema
 
-This creates a consistent output format even when publishers differ in their EPUB packaging. The process is not lossless: malformed files, missing package documents or unresolvable links may still result in omitted or imperfectly interpreted content.
+This creates a consistent output format even when EPUB packaging differs across publishers. The process is not lossless: malformed files, missing package documents or unresolvable links may still result in omitted or imperfectly interpreted content.
 
 ### JSON Output
 
@@ -97,7 +99,7 @@ A simplified output has this structure:
       "html_title": "Chapter 1",
       "body_titles": ["Chapter 1"],
       "inferred-type": "chapter",
-      "text": "...",
+      "text": "This is the text of chapter 1...",
       "is_narrative": true
     }
   ]
@@ -106,22 +108,23 @@ A simplified output has this structure:
 
 </details>
 
-The `content` array follows the EPUB’s table-of-contents hierarchy.
+
+The `content` array follows the EPUB’s table-of-contents hierarchy and the `text` array contains the actual text of each content block.
 
 Important fields include:
 
 | Field | Meaning |
 |------------------------------------|------------------------------------|
-| `epub_metadata` | Metadata read from the EPUB’s OPF package document |
-| `toc_repair` | Whether missing spine documents had to be added to the TOC |
-| `contain_subsections` | Whether the TOC contains structural sections |
-| `href` | Original navigation link |
-| `href_clean` | Link with any fragment identifier removed |
-| `title` | Title supplied by the EPUB navigation |
-| `html_title` | Content of the HTML `<title>` element |
-| `body_titles` | Text from `<h1>` to `<h5>` headings |
-| `inferred-type` | Rule-based semantic label such as chapter, cover, or novel |
-| `is_narrative` | BoW Classifier prediction for whether the block contains narrative text |
+| `epub_metadata` | Metadata read from the EPUB’s OPF package document. |
+| `toc_repair` | Whether missing spine documents had to be added to the TOC. |
+| `contain_subsections` | Whether the TOC contains structural sections. |
+| `href` | Original navigation link. |
+| `href_clean` | Link with any fragment identifier removed. |
+| `title` | Title supplied by the EPUB navigation. |
+| `html_title` | Content of the HTML `<title>` element. |
+| `body_titles` | Text from `<h1>` to `<h5>` headings. |
+| `inferred-type` | Rule-based semantic label such as chapter, cover, or novel. |
+| `is_narrative` | BoW Classifier prediction for whether the block contains narrative text. |
 
 ### Text Classification
 
@@ -129,21 +132,21 @@ The tool applies two complementary classification methods.
 
 First, a rule-based system assigns `inferred-type` using:
 
-- the navigation title;
+- the navigation title
 
-- the filename;
+- the filename
 
-- numbering patterns;
+- numbering patterns
 
-- selected words such as “Kapitel”, “Prolog”, “Impressum”, or “Cover”;
+- selected words such as “Kapitel”, “Prolog”, “Impressum”, or “Cover”
 
-- the content ending with indicators such as “Ende”.
+- the content ending with indicators such as “Ende”
 
-Second, a trained Bag of Words text classifier assigns `is_narrative`. This distinguishes narrative passages from material such as title pages, tables of contents, advertisements, front matter, and metadata pages.
+Second, a trained Bag of Words text classifier assigns `is_narrative`. This distinguishes narrative passages from material such as title pages, tables of contents, advertisements, front matter and metadata pages.
 
 ### Smallest Content Unit
 
-The smallest text-bearing unit is one complete XHTML or HTML file contained in the EPUB. The tool does not normally split a file into individual paragraphs, scenes, or sentences. The unit size is therefore determined by the publisher’s EPUB packaging:
+The smallest text-bearing unit is one complete XHTML or HTML file contained in the EPUB. The tool does not split a file into individual paragraphs, scenes or sentences. The unit size is determined by the publisher’s EPUB packaging:
 
 - one file may contain one chapter
 
@@ -155,15 +158,15 @@ The tool normalises and classifies the texts, but it does not create new textual
 
 ### Text chunking
 
-To stay within LLM context windows without losing semantic context, we avoided arbitrary token-length splitting. Instead, our pipeline utilizes a heuristic segmentation strategy which divides the ebook into segments before classification and TEI conversion. This makes the workflow reproducible: every chunk can be processed, inspected, reprocessed and stored independently.
+To stay within LLM context windows without losing semantic context, we avoided arbitrary token-length splitting (see [Tag-Frequeny Analysis](dataset.qmd#tag-frequency-analysis) for more details). Instead, our pipeline utilises a heuristic segmentation strategy, which divides the ebook into segments before classification and TEI conversion. This makes the workflow reproducible: every chunk can be processed, inspected, reprocessed and stored independently.
 
 | Chunking rule | Explanation |
 |------------------------------------|------------------------------------|
-| **Explicit chapter** | Creates a new chunk whenever the text has an inferred_type “chapter” label from `epub_unpack`. Asterisk delimiters inside chapters are considered as scene breaks and not further segmented. |
+| **Explicit chapter** | Creates a new chunk whenever the text has an inferred_type “chapter” label from `epub_unpack`. Asterisk delimiters inside chapters are considered as scene breaks and are not further segmented. |
 | **Implicit stars** | Creates a new chunk when a sequence of asterisk delimiters indicates a section break and no chapter heading is present. |
 | **Implicit JPEG** | Creates a new chunk when a JPEG image marks a section or chapter boundary and no chapter heading is present. |
 | **Non-chapter** | Creates a new chunk whenever the text has an inferred_type other than “chapter” from `epub_unpack`. |
-| **Novel no separator** | If an EPUB consists of a single, continuous narrative block with no internal layout boundaries inside one content key of `epub_unpack`, a warning is issued and it will be held back from further processing. |
+| **Novel no separator** | Issues a warning if an EPUB consists of a single, continuous narrative block with no internal layout boundaries inside one content key of `epub_unpack`. |
 
 Examples for implicit boundaries:
 
@@ -189,7 +192,7 @@ The segmentation yielded a total of 69,283 chunks across the test set, distribut
 ::: callout-note
 ## Unsegmented Novels (`novel_no_separator`)
 
-A total of 42 novels lacked internal structural delimiters or chapter headings entirely, causing the entire narrative body to remain in a single text block. These files are incompatible with the current chunk-level segmentation pipeline, as processing them would require passing the full text into an LLM context window at once, which was not yet evaluated within this framework and reserved for future pipeline iterations.
+A total of 42 novels lacked internal structural delimiters or chapter headings entirely, causing the entire narrative body to remain in a single text block. These files are incompatible with the current chunk-level segmentation pipeline and are stored separately for future processing.
 :::
 
 ## Stage 2: LLM Labelling
@@ -260,6 +263,8 @@ The final transformation script will include the following steps:
 </div>
 ```
 
-2.  The LLM receives the chunk text in a separate request and converts it into TEI markup. It generates only the content inside the `<div>` wrapper, not the surrounding.
+2.  The LLM receives the chunk text in a separate request and converts it into TEI markup. It transforms only the content inside the `<div>` wrapper, not the surrounding.
 3.  The chunks belonging to one novel are sorted by source position and a full TEI tree with an `teiHeader`is compiled.
 4.  The generated document is checked for valid XML before it is saved.
+
+A manually transformed TEI example was created to serve as a reference for future transformations. 

@@ -6,7 +6,7 @@ title-block: false
 
 ## Corpus Description
 
-Due to German copyright law of commercial e-books, full-text datasets, gold standards, or intermediate text formats cannot be published or distributed. To provide an insight into the characteristics of the corpus, this page provides an overview of the data used in this project including a structural analysis of publisher markup as well as a tag frequency analysis.
+Due to German copyright law of commercial e-books, full-text datasets, gold standards or intermediate text formats cannot be published or distributed. To provide an insight into the characteristics of the corpus, this page provides an overview of the data used in this project including a structural analysis of publisher markup as well as a tag frequency analysis.
 
 ## Corpus Overview
 
@@ -20,14 +20,14 @@ German dime novels are published across a wide variety of genres as both standal
 
 ## Structural Analysis
 
-Analysing the XML and HTML files inside the test data set revealed a lack of standardized semantic markup systems within and across publishing houses.
+Analysing the XML and HTML files inside the test data set revealed a lack of standardised semantic markup systems within and across publishing houses.
 
 Publishers rarely use semantic HTML tags to mark document hierarchies. Instead, they rely on visual simulation: encoding headings, body text, indents and separators through generic paragraph `<p>` and highlight `<hi>` tags combined with inline CSS or custom rend attributes.
 
 Differences between publishers (examples):
 
 - **Bastei Entertainment:** Bastei Entertainment uses a consistent but non-semantic styling system. Headings and scene transitions are often marked using specific paragraph rendering classes (e.g., `<p rend="standard-leerzeile">` to denote paragraph spacing or `<p rend="p" style="text-align: center;">` for centered paragraph blocks.
-- **Cora and HarperCollins (184 Books):** These publishers use highly inconsistent, divergent visual encodings. Translating these files requires mapping a long tail of volatile CSS classes and inline style definitions.
+- **Cora and HarperCollins:** These publishers use highly inconsistent, divergent visual encodings. Translating these files requires mapping a long tail of volatile CSS classes and inline style definitions.
 
 Differences of encoding conventions (examples):
 
@@ -49,4 +49,4 @@ The longest individual chapters in the corpus contain about 25,600 markup tokens
 
 ## Project Considerations
 
-To stay within LLM context windows without losing semantic context, we decided against arbitrary token-length splitting. Instead, we opted for a hybrid approach [pipeline](pipeline.qmd), in which the smallest units of text (individual chapters and paratexts containing up to 25,000 tokens) are extracted and passed as input to a model alongside a detailed prompt for text type classification.
+To stay within LLM context windows without losing semantic context, we decided against arbitrary token-length splitting. Instead, we opted for a hybrid approach [pipeline](pipeline.qmd), in which the smallest units of text (individual chapters and paratexts) are extracted and passed as input to a model alongside a detailed prompt for text type classification.

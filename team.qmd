@@ -8,55 +8,63 @@ toc: false
 ::: {.team-section .team-leadership}
 **Project Leadership and Supervision**
 
-::: {.team-card .team-card-lead}
+::: {.team-card .team-card-lead #fotis-jannidis}
 **Prof. Dr. Fotis Jannidis**\
 Chair of Computational Philology, University of Würzburg\
-[Contact](https://www.germanistik.uni-wuerzburg.de/computerphilologie/team/jannidis/)
+[Contact](https://www.germanistik.uni-wuerzburg.de/computerphilologie/team/jannidis/){.contact-link} · [ORCID](https://orcid.org/0000-0001-6944-6113){.orcid-link}
 :::
 :::
 
 ::: {.team-section}
-**Development & Research**
+**Development and Research**
 
 ::: {.team-grid}
-::: {.team-card .team-card-featured}
-**Marina Spielberg**
+::: {.team-card .team-card-featured #marina-spielberg}
+**Marina Spielberg** [ORCID](https://orcid.org/0009-0006-6924-0485){.orcid-link}
 
-*Contributions:* Development of the heuristic chunking workflow, prompt engineering for text type classification, LLM benchmarking and evaluation, corpus analysis, annotation tool creation, gold-standard manual annotation, upgrading `epub_unpack`for HPC-based processing, documentation website creation.
+*Contributions:* Development of the heuristic chunking workflow, prompt engineering for text type classification, LLM benchmarking and evaluation, corpus analysis, annotation tool creation, gold-standard manual annotation, upgrading `epub_unpack` for HPC-based processing, project website creation.
 
+::: {.project-period}
 *Project Period:* 15.05.2025-30.09.2026
-
-*Contact/Affiliation:* University Würzburg,[ORCID](https://orcid.org/0009-0006-6924-0485)
 :::
 
-::: {.team-card}
+*Affiliation:* University Würzburg
+:::
+
+::: {.team-card #leonard-konle}
 **Leonard Konle**
 
 *Contributions:* Deployment of open-weight LLMs via Hugging Face/vLLM on the TU Dresden HPC cluster and tensor parallelism scaling.
 
-*Project Period:*
-
-*Contact/Affiliation:* University Würzburg
+::: {.project-period}
+*Project Period:* 01.08.2022-30.09.2026
 :::
 
-::: {.team-card}
+*Affiliation:* University Würzburg
+:::
+
+::: {.team-card #lennart-keller}
 **Lennart Keller**
 
 *Contributions:* Development of the `epub_unpack` extraction tool and type inference heuristics.
 
-*Project Period: 01.01.2023-31.03.2024*
-
-*Contact/Affiliation:* University Würzburg
+::: {.project-period}
+*Project Period:* 01.06.2024-31.12.2024
 :::
 
-::: {.team-card}
+*Affiliation:* University Würzburg
+:::
+
+::: {.team-card #thora-hagen}
 **Thora Hagen**
 
 *Contributions:* Development of the TF-IDF Bag-of-Words classification baselines.
 
-*Project Period:*
+::: {.project-period}
+*Project Period:* 01.06.2024-31.12.2024
+:::
 
-*Contact/Affiliation:* University Würzburg
+*Affiliation:* University Würzburg
 :::
 :::
 :::
@@ -65,12 +73,12 @@ Chair of Computational Philology, University of Würzburg\
 **Student Research Assistants**
 
 ::: {.team-grid .team-grid-compact}
-::: {.team-card}
+::: {.team-card #aidan-belisle}
 **Aidan Belisle**, University Würzburg\
 Gold-standard manual annotation
 :::
 
-::: {.team-card}
+::: {.team-card #lilli-moutschka}
 **Lilli Moutschka**, University Würzburg\
 EPUB semantic structure annotation
 :::

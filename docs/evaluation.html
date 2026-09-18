@@ -113,6 +113,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Evaluation</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./publications.pdf"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./team.html"> 
 <span class="menu-text">Team</span></a>
   </li>  
@@ -160,11 +164,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-gold-standard-test-set" class="level2">
 <h2 class="anchored" data-anchor-id="the-gold-standard-test-set">The Gold Standard Test Set</h2>
 <p>The classification of text types in dime novels poses an inherent class imbalance problem. Their narrative body accounts for most of all content segments. A random test sample would result in a dataset dominated by story chapters.</p>
-<p>To counter this issue, we created a stratified sample. From 25 novels (1071 segments) of the <a href="./dataset.html">test corpus</a> from different series and publishers all non-chapter chunks were taken (134 in total). To reach 200 text chunks the remaining 67 segments were filled with randomly taken chapters from the same pool of novels.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/gold_set_distribution_round1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. Reader-information was later renamed to “meta-information”."><img src="images/gold_set_distribution_round1.png" class="img-fluid figure-img" style="width:70.0%" alt="Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. Reader-information was later renamed to “meta-information”."></a></p>
-<figcaption>Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. Reader-information was later renamed to “meta-information”.</figcaption>
+<p>To counter this issue, we created a stratified sample. From 25 novels (1071 segments) of the <a href="./dataset.html">test corpus</a>, which include different series and publishers, all non-chapter chunks were taken (134 in total). To reach 200 text chunks the remaining 67 segments were filled with randomly taken chapters from the same pool of novels.</p>
+<div id="fig-gold-set-distribution-round1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gold-set-distribution-round1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/gold_set_distribution_round1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. reader-information was later renamed to meta-information."><img src="images/gold_set_distribution_round1.png" class="img-fluid figure-img" style="width:70.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gold-set-distribution-round1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Class distribution of the 200 benchmark chunks during Round 1 evaluation across the initial taxonomy. <code>reader-information</code> was later renamed to <code>meta-information</code>.
+</figcaption>
 </figure>
 </div>
 </section>
