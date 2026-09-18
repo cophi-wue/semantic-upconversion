@@ -29,6 +29,6 @@ website:
 format:
   html:
     theme: cosmo
-    css: styles-playground.css
+    css: styles.css
     toc: false
     lightbox: true

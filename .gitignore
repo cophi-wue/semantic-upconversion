@@ -1,5 +1,4 @@
 .quarto/
-_playground/
 _fresh/
 *.pyc
 __pycache__/
