@@ -18,7 +18,7 @@
 
 :::: {.column .index-main-column width="55%"}
 ## Semantic Upconversion of German Dime Novels
-Welcome to the documentation portal for the project "Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek".
+Welcome to the documentation portal for the project "Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek" (Semantic Upconversion andStructural Analysis of German Dime Novels of the German National Library).
 
 **Context and Scope**
 
@@ -55,7 +55,7 @@ Although commercial EPUBs are born-digital objects with machine-readable text, t
 **Project team**
 
 - [Aidan Belisle](team.qmd#aidan-belisle)
-- [**Prof. Dr. Fotis Jannidis**](team.qmd#fotis-jannidis)
+- [**Fotis Jannidis**](team.qmd#fotis-jannidis)
 - [Thora Hagen](team.qmd#thora-hagen)
 - [Lennart Keller](team.qmd#lennart-keller)
 - [Leonard Konle](team.qmd#leonard-konle)

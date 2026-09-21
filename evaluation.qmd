@@ -24,7 +24,7 @@ To establish a verified baseline for classification evaluation and prompt refine
 
 ## Evaluation: Round 1
 
-In the first evaluation phase, we tested five small open-weight models (≤120B parameters). The models were prompted to classify each segment of the gold dataset into an 11-class taxonomy shown in the distribution table above.
+In the first evaluation phase, we tested five small open-weight models (≤120B parameters) to test whether smaller architectures could deliver sufficient classification performance while minimizing computational overhead. The models were prompted to classify each segment of the gold dataset into an 11-class taxonomy shown in the distribution table above.
 
 This setup presented a severe challenge because several paratextual classes shared highly overlapping semantic and stylistic boundaries (such as *reading samples* vs. *narrative chapters*, or *advertisements* vs. *series introductions*).
 
@@ -36,7 +36,7 @@ While moonshotai_kimi-k2 achieved the highest accuracy (90.0%), its Macro F1-sco
 
 ## Evaluation: Round 2
 
-To resolve these boundary conflicts, we restructured the vocabulary into a two-tier [taxonomy](guidelines.qmd#label-taxonomy) of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models.
+To resolve these boundary conflicts, we restructured the vocabulary into a two-tier [taxonomy](guidelines.qmd#label-taxonomy) of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models from top leaderboard rankings to evaluate the performance gains of significantly larger parameter scales compared to the smaller models from Round 1.
 
 ![Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information.](images/gold_set_distribution_round2.png){width="70%"}
 

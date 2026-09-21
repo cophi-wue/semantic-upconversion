@@ -6,13 +6,13 @@ title-block: false
 
 ## Corpus Description
 
-Due to German copyright law of commercial e-books, full-text datasets, gold standards or intermediate text formats cannot be published or distributed. To provide an insight into the characteristics of the corpus, this page provides an overview of the data used in this project including a structural analysis of publisher markup as well as a tag frequency analysis.
+Because commercial EPUBs are protected under German copyright law, full-text datasets, gold standards or intermediate text formats cannot be published or distributed. To provide an insight into the characteristics of the corpus, this page provides an overview of the data used in this project including a structural analysis of publisher markup as well as a tag frequency analysis.
 
 ## Corpus Overview
 
 German dime novels are published across a wide variety of genres as both standalone weekly issues and multi-issue omnibus editions (*Sammelbände*) in print as well as in EPUB format.
 
-- **Local test corpus:** To design the taxonomy, test extraction heuristics, annotate the gold-standard and evaluate the LLM classification of text types we used a representative test corpus of 957 EPUB files of German dime novels (standalone and omnibus editions) acquired by the Chair of Computational Philology at the University of Würzburg. This collection covers diverse serial popular genres, including Westerns (*Lassiter*, *G.F. Unger*), horror (*John Sinclair*, *Dorian Hunter*, *Maddrax*), romance (*Baccara*, *Julia Extra*) and science-fiction (*Perry Rhodan*).
+- **Local test corpus:** To design the taxonomy, test extraction heuristics, annotate the gold-standard and evaluate the LLM classification of text types we used a test corpus of 957 EPUB files of German dime novels (standalone and omnibus editions) acquired by the Chair of Computational Philology at the University of Würzburg. This collection covers diverse serial popular genres, including Westerns (*Lassiter*, *G.F. Unger*), horror (*John Sinclair*, *Dorian Hunter*, *Maddrax*), romance (*Baccara*, *Julia Extra*) and science-fiction (*Perry Rhodan*).
 
 - **The German National Library Collection (DNB corpus):** The target production dataset consists of 35,087 EPUB files of dime novels. Using our Python tool `epub_unpack` we extracted 35,068 books into the intermediate structured JSON format, making them ready for further processing.
 
