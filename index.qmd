@@ -18,7 +18,7 @@
 
 :::: {.column .index-main-column width="55%"}
 ## Semantic Upconversion of German Dime Novels
-Welcome to the documentation portal for the project "Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek" (Semantic Upconversion andStructural Analysis of German Dime Novels of the German National Library).
+Welcome to the documentation portal for the project "Erschließung und Strukturanalyse der Heftromane der Deutschen Nationalbibliothek" (Semantic Upconversion and Structural Analysis of German Dime Novels of the German National Library).
 
 **Context and Scope**
 
