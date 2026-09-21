@@ -185,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="evaluation-round-1" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation-round-1">Evaluation: Round 1</h2>
-<p>In the first evaluation phase, we tested five small open-weight models (≤120B parameters). The models were prompted to classify each segment of the gold dataset into an 11-class taxonomy shown in the distribution table above.</p>
+<p>In the first evaluation phase, we tested five small open-weight models (≤120B parameters) to test whether smaller architectures could deliver sufficient classification performance while minimizing computational overhead. The models were prompted to classify each segment of the gold dataset into an 11-class taxonomy shown in the distribution table above.</p>
 <p>This setup presented a severe challenge because several paratextual classes shared highly overlapping semantic and stylistic boundaries (such as <em>reading samples</em> vs.&nbsp;<em>narrative chapters</em>, or <em>advertisements</em> vs.&nbsp;<em>series introductions</em>).</p>
 <p><a href="images/cm_gpt_oss_120b_round1_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/cm_gpt_oss_120b_round1_normalized.png" class="img-fluid" style="width:70.0%"></a></p>
 <p><a href="images/cm_kimi_k2_round1_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/cm_kimi_k2_round1_normalized.png" class="img-fluid" style="width:70.0%"></a></p>
@@ -193,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="evaluation-round-2" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation-round-2">Evaluation: Round 2</h2>
-<p>To resolve these boundary conflicts, we restructured the vocabulary into a two-tier <a href="./guidelines.html#label-taxonomy">taxonomy</a> of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models.</p>
+<p>To resolve these boundary conflicts, we restructured the vocabulary into a two-tier <a href="./guidelines.html#label-taxonomy">taxonomy</a> of primary and secondary labels and restricted the LLM evaluation to the primary labels. Additionally, we benchmarked state-of-the-art open-weight models from top leaderboard rankings to evaluate the performance gains of significantly larger parameter scales compared to the smaller models from Round 1.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/gold_set_distribution_round2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information."><img src="images/gold_set_distribution_round2.png" class="img-fluid figure-img" style="width:70.0%" alt="Class distribution of the 200 benchmark chunks following the consolidation of paratextual subcategories under reader-information."></a></p>

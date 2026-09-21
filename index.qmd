@@ -4,7 +4,7 @@
 :::::::: {.columns .index-page}
 :::: {.column width="20%"}
 ::: {.index-brand-rail}
-[![](images/unilogo4cohne.png){width="80%"}](https://www.uni-wuerzburg.de)
+[![](images/university-wuerzburg-logo.png){width="80%"}](https://www.uni-wuerzburg.de)
 
 [![](images/textplus_logo_RGB.png){width="50%"}](https://www.text-plus.org)
 
